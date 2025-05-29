@@ -1,3 +1,5 @@
+#frankiestellato.com
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,18 +36,34 @@
         
         /* Carousel item transitions - Adjust animation speed if needed */
         .carousel-item {
-            transition: transform 0.5s ease; /* Animation duration */
+            transition: transform 0.5s ease, opacity 0.5s ease; /* Animation duration for transform and opacity */
+            flex-shrink: 0; /* Prevent items from shrinking if carousel is too narrow */
         }
         
         /* Active carousel item styling */
         .carousel-item.active {
             transform: scale(1.05); /* Slightly enlarges active item */
             opacity: 1;
+            z-index: 10; /* Ensure active item is on top if overlapping during transition */
         }
         
         /* Inactive carousel item styling */
         .carousel-item:not(.active) {
-            opacity: 0.7; /* Makes non-active items slightly transparent */
+            opacity: 0.6; /* Makes non-active items slightly transparent */
+            transform: scale(0.95); /* Slightly shrinks non-active items */
+        }
+        
+        /* Carousel viewport */
+        .carousel-viewport {
+            position: relative;
+            overflow: hidden; /* This is crucial for the centering effect */
+            width: 100%;
+        }
+
+        /* Carousel track - this is the element that will be translated */
+        #carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
         }
         
         /* Mobile responsiveness adjustments */
@@ -55,8 +73,20 @@
             }
             
             .carousel-item {
-                width: 80%; /* Wider items on mobile */
-                margin: 0 auto; /* Centers items */
+                width: 70vw; /* Wider items on mobile to take more screen space */
+                min-width: 280px; /* Adjust min-width for mobile if needed */
+                margin: 0 10px; /* Add some horizontal margin for spacing when centered */
+            }
+
+            /* Adjust button positions slightly for mobile if needed */
+            #prevBtn, #nextBtn {
+                padding: 12px; /* Slightly smaller buttons */
+            }
+            #prevBtn {
+                left: 5px;
+            }
+            #nextBtn {
+                right: 5px;
             }
         }
     </style>
@@ -85,6 +115,49 @@
     <!-- MAIN CONTENT AREA -->
     <main class="container mx-auto px-4 py-12">
         <!-- 
+        CURRENTLY WORKING ON SECTION
+        --------------------------
+        To change:
+        1. Replace the image URL with your project poster/image.
+        2. Update the project title.
+        3. Update the project description.
+        4. Optionally, update the link URL and text if you have one.
+        -->
+        <section class="mb-16">
+            <!-- REMOVED: border-b border-gray-700 pb-2 from h2 below -->
+            <h2 class="text-3xl font-bold mb-8">Currently Working On</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-12 bg-gray-900 p-6 md:p-8 rounded-lg shadow-xl">
+                <!-- Project Image -->
+                <div class="w-full md:w-2/5 lg:w-1/3 mb-6 md:mb-0">
+                    <!-- REPLACE THIS IMAGE WITH YOUR CURRENT PROJECT IMAGE -->
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                         alt="Current Project Poster" 
+                         class="rounded-lg shadow-lg w-full h-auto object-cover max-h-[400px] md:max-h-none">
+                </div>
+                <!-- Project Details -->
+                <div class="w-full md:w-3/5 lg:w-2/3">
+                    <!-- UPDATE PROJECT TITLE HERE -->
+                    <h3 class="text-2xl lg:text-3xl font-semibold mb-3 text-yellow-400">Exciting New Project Title</h3>
+                    <!-- UPDATE PROJECT DESCRIPTION HERE -->
+                    <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+                        Brief description of what you're currently working on. This could be a short film, a new animation technique you're exploring, a client project, or a personal piece. Highlight key aspects or what makes it interesting. For example, "Currently animating a fantastical journey of a firefly through a mystical forest, focusing on atmospheric lighting and particle effects."
+                    </p>
+                    <p class="text-md text-gray-400 mb-6">
+                        Expected Completion: [Your Expected Date/Phase]
+                    </p>
+                    <!-- OPTIONAL: Link to more info, e.g., a WIP blog post or social media update -->
+                    <!-- 
+                    <a href="#" 
+                       class="inline-flex items-center px-5 py-2 border border-yellow-400 text-yellow-400 rounded-full hover:bg-yellow-400 hover:text-black transition duration-300">
+                        <span>View Progress</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a> 
+                    -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 
         DEMO REEL SECTION
         ------------------
         To change:
@@ -92,13 +165,14 @@
         2. Update the "View More on Vimeo" link to your Vimeo profile
         -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b border-gray-700 pb-2">Demo Reel</h2>
+            <!-- REMOVED: border-b border-gray-700 pb-2 from h2 below -->
+            <h2 class="text-3xl font-bold mb-8">Demo Reel</h2>
             <div class="aspect-w-16 aspect-h-9 w-full">
                 <!-- REPLACE THIS VIMEO EMBED WITH YOUR DEMO REEL -->
                 <iframe src="https://player.vimeo.com/video/76979871?h=827a7a647a" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
-                        class="w-full h-96"
+                        class="w-full h-96 rounded-lg shadow-lg"
                         allowfullscreen></iframe>
             </div>
             <div class="mt-6 text-center">
@@ -119,26 +193,30 @@
         2. Update the section title if needed
         -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 border-b border-gray-700 pb-2">Selected Works</h2>
+            <!-- REMOVED: border-b border-gray-700 pb-2 from h2 below -->
+            <h2 class="text-3xl font-bold mb-8">Selected Works</h2>
             
-            <div class="relative overflow-hidden">
-                <!-- Carousel container - populated by JavaScript -->
-                <div id="carousel" class="flex transition-transform duration-500">
-                    <!-- Items added dynamically -->
+            <!-- Carousel Viewport - This div is for managing the visible area and centering -->
+            <div class="carousel-viewport"> 
+                <!-- Carousel track - This div holds all items and moves -->
+                <div id="carousel" class="flex">
+                    <!-- Items added dynamically by JavaScript -->
                 </div>
-                
-                <!-- Navigation buttons - no need to modify -->
-                <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-4 rounded-full hover:bg-opacity-80 z-10">
-                    <i class="fas fa-chevron-left text-2xl"></i>
+            </div>
+            
+            <!-- Navigation buttons - no need to modify these structurally -->
+            <div class="relative"> <!-- Added a relative parent for absolute positioning of buttons if carousel-viewport itself has specific positioning needs -->
+                <button id="prevBtn" class="absolute left-0 md:left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 p-3 md:p-4 rounded-full hover:bg-opacity-80 z-20 text-white">
+                    <i class="fas fa-chevron-left text-xl md:text-2xl"></i>
                 </button>
                 
-                <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-4 rounded-full hover:bg-opacity-80 z-10">
-                    <i class="fas fa-chevron-right text-2xl"></i>
+                <button id="nextBtn" class="absolute right-0 md:right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 p-3 md:p-4 rounded-full hover:bg-opacity-80 z-20 text-white">
+                    <i class="fas fa-chevron-right text-xl md:text-2xl"></i>
                 </button>
             </div>
             
             <!-- Indicator dots - populated by JavaScript -->
-            <div id="carouselIndicators" class="flex justify-center mt-4 space-x-2">
+            <div id="carouselIndicators" class="flex justify-center mt-6 space-x-2">
                 <!-- Indicators added dynamically -->
             </div>
         </section>
@@ -152,19 +230,20 @@
         3. Update the contact text if needed
         -->
         <section>
-            <h2 class="text-3xl font-bold mb-8 border-b border-gray-700 pb-2">Contact</h2>
+            <!-- REMOVED: border-b border-gray-700 pb-2 from h2 below -->
+            <h2 class="text-3xl font-bold mb-8">Contact</h2>
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <!-- UPDATE CONTACT TEXT IF NEEDED -->
-                    <p class="text-xl mb-2">For work inquiries or collaborations</p>
+                    <p class="text-xl mb-2">For work inquiries or collaborations:</p>
                     <!-- UPDATE YOUR EMAIL ADDRESS -->
-                    <a href="mailto:your.email@example.com" class="text-xl hover:underline">your.email@example.com</a>
+                    <a href="mailto:your.email@example.com" class="text-xl text-yellow-400 hover:underline">your.email@example.com</a>
                 </div>
-                <div class="flex space-x-4">
+                <div class="flex space-x-6">
                     <!-- SOCIAL MEDIA LINKS - UPDATE OR ADD MORE AS NEEDED -->
-                    <a href="#" class="text-2xl hover:text-gray-400 transition"><i class="fab fa-vimeo-v"></i></a>
-                    <a href="#" class="text-2xl hover:text-gray-400 transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-2xl hover:text-gray-400 transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-3xl hover:text-gray-400 transition"><i class="fab fa-vimeo-v"></i></a>
+                    <a href="#" class="text-3xl hover:text-gray-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-3xl hover:text-gray-400 transition"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </section>
@@ -176,10 +255,10 @@
     To change:
     1. Update the copyright text
     -->
-    <footer class="bg-gray-900 py-8">
+    <footer class="bg-gray-900 py-8 mt-16">
         <div class="container mx-auto px-4 text-center">
             <!-- UPDATE COPYRIGHT TEXT IF NEEDED -->
-            <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+            <p>© <span id="year"></span> Your Name. All rights reserved.</p>
         </div>
     </footer>
 
@@ -193,21 +272,21 @@
         // Automatically updates copyright year - no need to modify
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Carousel functionality - only modify the posters array below
+        // Carousel functionality
         document.addEventListener('DOMContentLoaded', function() {
             // 
             // POSTERS DATA ARRAY - THIS IS WHAT YOU'LL MODIFY TO ADD/REMOVE POSTERS
             // ---------------------------------------------------------
             // To add a new poster:
             // 1. Copy one of the existing objects between the {}
-            // 2. Paste it in the array (make sure to add a comma after each one)
-            // 3. Update the title, image URL, and year
+            // 2. Paste it in the array (make sure to add a comma after the previous one)
+            // 3. Update the title, image URL (use relative paths like "images/poster.jpg" if hosting locally), and year
             //
             const posters = [
                 {
-                    title: "Ant-Man and the Wasp",        // Change this to your film title
-                    image: "antman-wasp-poster-1105842.jpeg",  // Replace with your poster image
-                    year: "2018"                   // Change the year
+                    title: "Film Title 1",        // Change this to your film title
+                    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",  // Replace with your poster image
+                    year: "2023"                   // Change the year
                 },
                 {
                     title: "Film Title 2",
@@ -232,75 +311,130 @@
                 // To add more posters, copy the format above and add here
             ];
 
-            // Get DOM elements - no need to modify
-            const carousel = document.getElementById('carousel');
-            const indicators = document.getElementById('carouselIndicators');
+            // Get DOM elements - no need to modify these unless HTML structure changes significantly
+            const carouselTrack = document.getElementById('carousel'); // This is the flex container that moves
+            const carouselViewport = carouselTrack.parentElement; // The div with overflow:hidden
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
             let currentIndex = 0;
+            let carouselItems = []; // To store references to the created items
+
+            if (posters.length === 0) {
+                // Handle case with no posters (e.g., hide carousel or show a message)
+                if (carouselViewport) carouselViewport.style.display = 'none';
+                if (indicatorsContainer) indicatorsContainer.style.display = 'none';
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                return; // Stop if no posters
+            }
 
             // Create carousel items - no need to modify
             posters.forEach((poster, index) => {
-                // Create carousel item
                 const item = document.createElement('div');
-                item.className = `carousel-item w-1/3 min-w-[300px] px-4 ${index === 0 ? 'active' : ''}`;
+                // Tailwind classes for item styling. Adjust w-full/md:w-auto, min-w-[] and mx-[] for sizing and spacing.
+                item.className = `carousel-item w-[70vw] md:w-1/3 min-w-[280px] md:min-w-[300px] p-2 md:p-4 box-border ${index === 0 ? 'active' : ''}`;
                 item.innerHTML = `
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-                        <img src="${poster.image}" alt="${poster.title}" class="w-full h-96 object-cover">
-                        <div class="p-4">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
+                        <img src="${poster.image}" alt="${poster.title}" class="w-full h-80 md:h-96 object-cover">
+                        <div class="p-4 flex-grow">
                             <h3 class="text-xl font-bold">${poster.title}</h3>
                             <p class="text-gray-400">${poster.year}</p>
                         </div>
                     </div>
                 `;
-                carousel.appendChild(item);
+                carouselTrack.appendChild(item);
+                carouselItems.push(item); // Store item reference
 
                 // Create indicator
                 const indicator = document.createElement('button');
-                indicator.className = `w-3 h-3 rounded-full ${index === 0 ? 'bg-white' : 'bg-gray-500'}`;
+                indicator.className = `w-3 h-3 rounded-full transition-colors duration-300 ${index === 0 ? 'bg-white' : 'bg-gray-600 hover:bg-gray-400'}`;
+                indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
                 indicator.addEventListener('click', () => {
                     goToSlide(index);
                 });
-                indicators.appendChild(indicator);
+                indicatorsContainer.appendChild(indicator);
             });
-
-            // Navigation buttons - no need to modify
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
-            });
-
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-
-            // Function to navigate to specific slide - no need to modify
+            
+            // Function to navigate to specific slide and center it
+            // This is the core logic for centering the active item.
             function goToSlide(index) {
-                const items = document.querySelectorAll('.carousel-item');
-                const dots = document.querySelectorAll('#carouselIndicators button');
+                const numItems = carouselItems.length;
+                if (numItems === 0) return;
+
+                // Handle wrap-around for index
+                if (index >= numItems) {
+                    index = 0;
+                } else if (index < 0) {
+                    index = numItems - 1;
+                }
                 
-                // Handle wrap-around
-                if (index >= items.length) index = 0;
-                if (index < 0) index = items.length - 1;
-                
-                // Update active states
-                items.forEach((item, i) => {
-                    item.classList.toggle('active', i === index);
+                currentIndex = index; // Update current index
+
+                // Update active states for items and indicators
+                carouselItems.forEach((item, i) => {
+                    item.classList.toggle('active', i === currentIndex);
                 });
                 
+                const dots = indicatorsContainer.querySelectorAll('button');
                 dots.forEach((dot, i) => {
-                    dot.classList.toggle('bg-white', i === index);
-                    dot.classList.toggle('bg-gray-500', i !== index);
+                    dot.classList.toggle('bg-white', i === currentIndex);
+                    dot.classList.toggle('bg-gray-600', i !== currentIndex);
+                     dot.classList.toggle('hover:bg-gray-400', i !== currentIndex);
                 });
                 
-                // Update transform for carousel
-                const offset = -index * (100 / posters.length);
-                carousel.style.transform = `translateX(${offset}%)`;
-                
-                currentIndex = index;
+                // Calculate the necessary translation to center the active item
+                const activeItem = carouselItems[currentIndex];
+                if (activeItem && carouselViewport) {
+                    const viewportWidth = carouselViewport.offsetWidth;
+                    const itemOffsetLeftInTrack = activeItem.offsetLeft; // Item's left edge relative to carouselTrack
+                    const itemWidth = activeItem.offsetWidth;
+                    
+                    // Target: Center of activeItem should align with center of carouselViewport
+                    // translationX = (viewportCenter) - (activeItemCenterInTrack)
+                    // translationX = (viewportWidth / 2) - (itemOffsetLeftInTrack + itemWidth / 2)
+                    const translationX = (viewportWidth / 2) - (itemOffsetLeftInTrack + (itemWidth / 2));
+                    
+                    carouselTrack.style.transform = `translateX(${translationX}px)`;
+                }
             }
 
-            // Auto-advance carousel (optional) - change 5000 to adjust speed (milliseconds)
-            setInterval(() => {
+            // Event Listeners for navigation buttons - no need to modify
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    goToSlide(currentIndex - 1);
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    goToSlide(currentIndex + 1);
+                });
+            }
+            
+            // Initial setup: Go to the first slide to center it correctly on page load
+            goToSlide(0); 
+
+            // Optional: Auto-advance carousel
+            // Adjust 5000 (milliseconds) for speed, or comment out/remove if not desired
+            let autoAdvanceInterval = setInterval(() => {
                 goToSlide(currentIndex + 1);
-            }, 5000);
+            }, 7000); // Increased interval slightly
+
+            // Optional: Pause auto-advance on hover
+            if (carouselViewport) {
+                carouselViewport.addEventListener('mouseenter', () => clearInterval(autoAdvanceInterval));
+                carouselViewport.addEventListener('mouseleave', () => {
+                    autoAdvanceInterval = setInterval(() => {
+                        goToSlide(currentIndex + 1);
+                    }, 7000);
+                });
+            }
+
+            // Recalculate on window resize to maintain centering
+            window.addEventListener('resize', () => {
+                goToSlide(currentIndex); // Re-center the current item
+            });
         });
     </script>
 </body>
