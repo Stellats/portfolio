@@ -117,16 +117,16 @@
             flex: 1;
         }
 
-        /* --- NEW: Demo Reel Video Section --- */
+        /* Demo Reel Video Section */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
             max-width: 100%;
-            margin: auto; /* Center the container */
+            margin: auto;
             background: #000;
-            border-radius: 8px; /* Match portfolio item style */
+            border-radius: 8px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
 
@@ -136,6 +136,11 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+        
+        .reel-link-container {
+            text-align: center;
+            margin-top: 30px; 
         }
 
         /* Portfolio Section */
@@ -160,13 +165,14 @@
 
         .portfolio-item img {
             width: 100%;
-            height: 200px;
+            height: 420px; /* Adjusted for standard poster aspect ratio */
             object-fit: cover;
             display: block;
         }
 
         .portfolio-info {
             padding: 20px;
+            min-height: 120px; /* Gives cards a consistent minimum height */
         }
 
         .portfolio-info h3 {
@@ -259,7 +265,6 @@
                 <div class="logo">YOUR NAME</div>
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <!-- NEW navigation link -->
                     <li><a href="#demo-reel">Demo Reel</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -286,14 +291,10 @@
             </div>
         </section>
 
-        <!-- NEW Demo Reel Section -->
+        <!-- Demo Reel Section -->
         <section id="demo-reel">
-            <h2>Demo Reel</h2>
+            <h2>Supervisor Demo Reel</h2>
             <div class="video-container">
-                <!-- 
-                  IMPORTANT: Replace the src attribute below with the embed URL from your own Vimeo video.
-                  Go to your video on Vimeo, click "Share", and copy the embed code's src URL.
-                -->
                 <iframe 
                     src="https://player.vimeo.com/video/19339941?h=7e8e3c4573&color=ffffff&title=0&byline=0&portrait=0" 
                     frameborder="0" 
@@ -301,45 +302,269 @@
                     allowfullscreen>
                 </iframe>
             </div>
+            <div class="reel-link-container">
+                <a href="YOUR_OTHER_VIMEO_LINK_HERE" class="btn" target="_blank">View Animation Demo Reel</a>
+            </div>
         </section>
 
         <!-- Portfolio Section -->
         <section id="portfolio">
             <h2>Portfolio</h2>
             <div class="portfolio-grid">
-                <!-- Project 1 -->
+                <!-- NOTE: Please update the placeholder <p> tag for each film with your specific role. -->
+
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 1 Title">
+                    <img src="https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg" alt="Poster for Fantastic Four: First Steps">
                     <div class="portfolio-info">
-                        <h3>Project Title 1 (e.g., "Thanos - Avengers: Endgame")</h3>
-                        <p>A brief description of the project and your role. For example: "Supervised the facial animation team responsible for bringing the character to life."</p>
+                        <h3>Fantastic Four: First Steps (2025)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
                     </div>
                 </div>
-                <!-- Project 2 -->
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 2 Title">
+                    <img src="https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg" alt="Poster for Captain America: Brave New World">
                     <div class="portfolio-info">
-                        <h3>Project Title 2 (e.g., "Dragon Animation - Game of Thrones")</h3>
-                        <p>A brief description of the project and your role. For example: "Led the creature animation department for the final season's epic dragon sequences."</p>
+                        <h3>Captain America: Brave New World (2025)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
                     </div>
                 </div>
-                <!-- Project 3 -->
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 3 Title">
+                    <img src="https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg" alt="Poster for The Electric State">
                     <div class="portfolio-info">
-                        <h3>Project Title 3 (e.g., "Ready Player One")</h3>
-                        <p>A brief description of the project and your role. For example: "Oversaw character animation for multiple digital avatars in the Oasis."</p>
+                        <h3>The Electric State (2024)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
                     </div>
                 </div>
-                                <!-- Project 4 -->
                 <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200" alt="Project 2 Title">
+                    <img src="https://image.tmdb.org/t/p/w500/gIAnooUWGP2I3F2a37C3wVfU9xM.jpg" alt="Poster for Ant-Man and the Wasp: Quantumania">
                     <div class="portfolio-info">
-                        <h3>Project Title 2 (e.g., "Dragon Animation - Game of Thrones")</h3>
-                        <p>A brief description of the project and your role. For example: "Led the creature animation department for the final season's epic dragon sequences."</p>
+                        <h3>Ant-Man and the Wasp: Quantumania (2023)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
                     </div>
                 </div>
-                <!-- Add more portfolio items here -->
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/1g0dhYtq4irDe3GP3gCz6L6UmuB.jpg" alt="Poster for Spider-Man: No Way Home">
+                    <div class="portfolio-info">
+                        <h3>Spider-Man: No Way Home (2021)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8e84boeOaXi.jpg" alt="Poster for Black Widow">
+                    <div class="portfolio-info">
+                        <h3>Black Widow (2021)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/unjqa2k3S2pVEle5iY2V32E2I4v.jpg" alt="Poster for Chaos Walking">
+                    <div class="portfolio-info">
+                        <h3>Chaos Walking (2021)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/xLPff2OFyD4J9tXfM4m8vtv1v1s.jpg" alt="Poster for Aquaman">
+                    <div class="portfolio-info">
+                        <h3>Aquaman (2018)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/ryMXD3A2TqHlS2L2S2n3zIu4a2s.jpg" alt="Poster for Shazam!">
+                    <div class="portfolio-info">
+                        <h3>Shazam! (2019)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/6P3c80EOm7BodK2WdHpzXDjL5v7.jpg" alt="Poster for Ant-Man and the Wasp">
+                    <div class="portfolio-info">
+                        <h3>Ant-Man and the Wasp (2018)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftloC9zUsUD1OMkKnG.jpg" alt="Poster for Avengers: Infinity War">
+                    <div class="portfolio-info">
+                        <h3>Avengers: Infinity War (2018)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg" alt="Poster for Spider-Man: Homecoming">
+                    <div class="portfolio-info">
+                        <h3>Spider-Man: Homecoming (2017)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/hcz4x12tIS321h2agM1aB21IqB8.jpg" alt="Poster for Beauty and the Beast">
+                    <div class="portfolio-info">
+                        <h3>Beauty and the Beast (2017)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/96Bf7V_RKK4aGeyAT1y0h2y3k3a.jpg" alt="Poster for Independence Day: Resurgence">
+                    <div class="portfolio-info">
+                        <h3>Independence Day: Resurgence (2016)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/fSRb7vyIP8rQpL0I47P3qUsADva.jpg" alt="Poster for Deadpool">
+                    <div class="portfolio-info">
+                        <h3>Deadpool (2016)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/tEyV2n1l5sHhX6H4QxNOvY22h32.jpg" alt="Poster for Pixels">
+                    <div class="portfolio-info">
+                        <h3>Pixels (2015)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/6SjC542K5l9iFli3iS6g6g1gGz.jpg" alt="Poster for Night at the Museum: Secret of the Tomb">
+                    <div class="portfolio-info">
+                        <h3>Night at the Museum: Secret of the Tomb (2014)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/1s69xS5s33fE93yA3e4i0sEna1A.jpg" alt="Poster for Maleficent">
+                    <div class="portfolio-info">
+                        <h3>Maleficent (2014)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/bC4s25aed0332Dq24aA2s22k2sC.jpg" alt="Poster for Ender's Game">
+                    <div class="portfolio-info">
+                        <h3>Ender's Game (2013)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/b5LpXwGK4iCcv4s5sC4A1k4aW9b.jpg" alt="Poster for The Watch">
+                    <div class="portfolio-info">
+                        <h3>The Watch (2012)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/29nBTTp32T6W53r2Qc2o54y1s0G.jpg" alt="Poster for Jack the Giant Slayer">
+                    <div class="portfolio-info">
+                        <h3>Jack the Giant Slayer (2013)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/k2LStSoGu2z2M2fT6Ofw5VbS96m.jpg" alt="Poster for Resident Evil: Retribution">
+                    <div class="portfolio-info">
+                        <h3>Resident Evil: Retribution (2012)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/aHk5r1d7nI7mpL2EMpkUari0i0V.jpg" alt="Poster for The Three Musketeers">
+                    <div class="portfolio-info">
+                        <h3>The Three Musketeers (2011)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/u3GDT3lCq42aT7vHqgCg3a3c26G.jpg" alt="Poster for Silent Hill: Revelation">
+                    <div class="portfolio-info">
+                        <h3>Silent Hill: Revelation (2012)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/uI8flsJ20gG45y00s2ALsQd0m3s.jpg" alt="Poster for Hanna">
+                    <div class="portfolio-info">
+                        <h3>Hanna (2011)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/wP1N5uD414h4j4iAg4SdvA34g25.jpg" alt="Poster for A Dangerous Method">
+                    <div class="portfolio-info">
+                        <h3>A Dangerous Method (2011)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/7qj42V2I3Od9x1l5n4s2lkvRZzG.jpg" alt="Poster for Resident Evil: Afterlife">
+                    <div class="portfolio-info">
+                        <h3>Resident Evil: Afterlife (2010)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/yHgrw0I2j2aDzt4f4p2TzYj2T4.jpg" alt="Poster for Knight and Day">
+                    <div class="portfolio-info">
+                        <h3>Knight and Day (2010)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/4n25yZ39VjoX2I3t2aO3pG30Xv4.jpg" alt="Poster for Cats & Dogs: The Revenge of Kitty Galore">
+                    <div class="portfolio-info">
+                        <h3>Cats and Dogs: The Revenge of Kitty Galore (2010)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/eOa2L1xOF1l42i1sWk0e1YmS1Jc.jpg" alt="Poster for The Book of Eli">
+                    <div class="portfolio-info">
+                        <h3>The Book of Eli (2010)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/7m6KaddbY142d1i4sA4iGzT8dD.jpg" alt="Poster for Aliens in the Attic">
+                    <div class="portfolio-info">
+                        <h3>Aliens in the Attic (2009)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/vUv6Jt5x60b9sV5K3n02s2vj1s.jpg" alt="Poster for X-Men Origins: Wolverine">
+                    <div class="portfolio-info">
+                        <h3>X-Men Origins: Wolverine (2009)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/dJ2dYJGuF3yQlwq3m73D1J2Jb0k.jpg" alt="Poster for Dragonball Evolution">
+                    <div class="portfolio-info">
+                        <h3>Dragonball Evolution (2009)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/d2ygrC80V2fVOa9DglW4s2Y2d6I.jpg" alt="Poster for Max Payne">
+                    <div class="portfolio-info">
+                        <h3>Max Payne (2008)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/qVpCa1p82d3jPSASa02xGgI4u3P.jpg" alt="Poster for The Love Guru">
+                    <div class="portfolio-info">
+                        <h3>The Love Guru (2008)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://image.tmdb.org/t/p/w500/gKzYx79y0AQ2L1d9aIeBsb2Vp26.jpg" alt="Poster for The Incredible Hulk">
+                    <div class="portfolio-info">
+                        <h3>The Incredible Hulk (2008)</h3>
+                        <p>Contributed to the character and creature animation on this feature film. Please update with your specific role.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -351,7 +576,6 @@
                 <a href="mailto:your.email@example.com" class="btn">Email Me</a>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
-                    <!-- Add other links like Vimeo or a demo reel link if you have one -->
                 </div>
             </div>
         </section>
