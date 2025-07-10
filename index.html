@@ -109,11 +109,33 @@
             border-radius: 50%;
             width: 150px;
             height: 150px;
+            object-fit: cover;
             border: 3px solid #333;
         }
         
         #about .about-text {
             flex: 1;
+        }
+
+        /* --- NEW: Demo Reel Video Section --- */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: auto; /* Center the container */
+            background: #000;
+            border-radius: 8px; /* Match portfolio item style */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Portfolio Section */
@@ -237,6 +259,8 @@
                 <div class="logo">YOUR NAME</div>
                 <ul>
                     <li><a href="#about">About</a></li>
+                    <!-- NEW navigation link -->
+                    <li><a href="#demo-reel">Demo Reel</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -259,6 +283,23 @@
                 <p>
                     Replace this with your biography. Talk about your passion for animation, your experience in the industry, and your role at Digital Domain. Mention key projects you've supervised or departments you've led. Keep it concise and engaging, highlighting your leadership skills and artistic vision. For example: "With over 15 years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films..."
                 </p>
+            </div>
+        </section>
+
+        <!-- NEW Demo Reel Section -->
+        <section id="demo-reel">
+            <h2>Demo Reel</h2>
+            <div class="video-container">
+                <!-- 
+                  IMPORTANT: Replace the src attribute below with the embed URL from your own Vimeo video.
+                  Go to your video on Vimeo, click "Share", and copy the embed code's src URL.
+                -->
+                <iframe 
+                    src="https://player.vimeo.com/video/19339941?h=7e8e3c4573&color=ffffff&title=0&byline=0&portrait=0" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </section>
 
