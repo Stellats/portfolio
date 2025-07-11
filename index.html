@@ -117,10 +117,22 @@
             transition: transform 0.4s ease-out;
         }
         /* Responsive fix for mobile */
-        @media (max-width: 600px) {
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
             .portfolio-item img {
                 height: 180px;
                 max-height: 40vw;
+            }
+        }
+        @media (max-width: 600px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-item img {
+                height: 120px;
+                max-height: 50vw;
             }
         }
         .portfolio-info { padding: 20px; min-height: 120px; }
@@ -197,7 +209,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me</h2>
+                <h2>About Me - TEST1</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -294,9 +306,9 @@
 
             // --- PORTFOLIO DATA ---
             const portfolioData = [
-                { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
-                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
-                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
+                { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/5iHh1ZQKQwA" }, // Official teaser or placeholder
+                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/8Qn_spdM5Zg" }, // Official teaser or placeholder
+                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/1FvVhJwzGdY" }, // Official teaser or placeholder
                 { title: "Ant-Man and the Wasp: Quantumania", year: 2023, poster: "https://image.tmdb.org/t/p/w500/gIAnooUWGP2I3F2a37C3wVfU9xM.jpg", videoUrl: "https://www.youtube.com/embed/ZlNFpri-Y40" },
                 { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irDe3GP3gCz6L6UmuB.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA" },
                 { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8e84boeOaXi.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI" },
