@@ -83,29 +83,22 @@
         section:last-of-type { border-bottom: none; }
         section h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #ffffff; font-weight: 700; }
 
-        #about .container {
+        /* --- MODIFIED: About Section uses Flexbox for layout --- */
+        .about-content {
             display: flex;
             align-items: center;
             gap: 40px;
         }
-        #about img {
+        .about-content img {
             border-radius: 50%;
             width: 150px;
             height: 150px;
             object-fit: cover;
             border: 3px solid var(--border-color);
-            flex-shrink: 0;
+            flex-shrink: 0; /* Prevents image from shrinking */
         }
-        #about .about-text {
-            flex: 1;
-        }
-        #about h2 {
-            text-align: left;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        #about p {
-            text-align: left;
+        .about-content p {
+            margin: 0; /* Remove default paragraph margin */
         }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: auto; background: #000; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
@@ -160,16 +153,14 @@
 
         @media (max-width: 900px) { .modal-body { flex-direction: column; } }
         @media (max-width: 768px) {
+            .branding-header { padding: 30px 20px; }
             .branding-header h1 { font-size: 2.5rem; }
             .branding-header p { font-size: 1.1rem; }
             .sticky-nav .container { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .sticky-nav a { font-size: 1rem; }
-            
-            #about .container {
+            /* Updated responsive style for about section */
+            .about-content {
                 flex-direction: column;
-                text-align: center;
-            }
-            #about h2, #about p {
                 text-align: center;
             }
         }
@@ -194,11 +185,11 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAEzAJYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1VZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A/fyiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA/9k=" alt="Frankie Stellato - Headshot">
-                <div class="about-text">
-                    <h2>About Me</h2>
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
-                        With over 15 years of experience in the VFX and animation industry, I have contributed to a wide range of blockbuster films. My expertise lies in leading animation teams to deliver high-quality character and creature performances that bring stories to life.
+                        With over 15 years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films. My passion lies in crafting compelling character and creature performances, overseeing the animation pipeline from concept to final shot. I thrive on mentoring artists and pushing the boundaries of visual storytelling to create unforgettable cinematic moments.
                     </p>
                 </div>
             </div>
