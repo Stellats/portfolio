@@ -83,9 +83,23 @@
         section:last-of-type { border-bottom: none; }
         section h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #ffffff; font-weight: 700; }
 
-        #about { display: flex; align-items: center; gap: 40px; }
-        #about img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; border: 3px solid var(--border-color); }
-        #about .about-text { flex: 1; }
+        /* --- MODIFIED: About Section uses Flexbox for layout --- */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .about-content img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            flex-shrink: 0; /* Prevents image from shrinking */
+        }
+        .about-content p {
+            margin: 0; /* Remove default paragraph margin */
+        }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: auto; background: #000; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -107,7 +121,7 @@
         .btn:hover { background-color: var(--accent-hover); color: #121212; transform: translateY(-3px); }
         .social-links { margin-top: 30px; }
         .social-links a { 
-            color: var(--text-secondary);
+            color: var(--text-secondary); 
             text-decoration: none; 
             margin: 0 15px; 
             transition: color 0.3s, transform 0.3s;
@@ -131,7 +145,11 @@
             .branding-header p { font-size: 1.1rem; }
             .sticky-nav .container { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .sticky-nav a { font-size: 1rem; }
-            #about { flex-direction: column; text-align: center; }
+            /* Updated responsive style for about section */
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -152,16 +170,15 @@
     </nav>
 
     <main>
+        <!-- MODIFIED: About section structure -->
         <section id="about" class="fade-in-section">
             <div class="container">
-                <div style="overflow: hidden;">
-                    <img src="https://via.placeholder.com/150" alt="Your Name - Headshot" style="float: left; margin-right: 40px; border-radius: 50%; width: 150px; height: 150px; object-fit: cover; border: 3px solid var(--border-color);">
-                    <div class="about-text">
-                        <h2>About Me</h2>
-                        <p>
-                            Replace this with your biography. Talk about your passion for animation, your experience in the industry, and your role at Digital Domain. Mention key projects you've supervised or departments you've led. Keep it concise and engaging, highlighting your leadership skills and artistic vision. For example: "With over 15 years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films..."
-                        </p>
-                    </div>
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <img src="https://via.placeholder.com/150" alt="Your Name - Headshot">
+                    <p>
+                        Replace this with your biography. Talk about your passion for animation, your experience in the industry, and your role at Digital Domain. Mention key projects you've supervised or departments you've led. Keep it concise and engaging, highlighting your leadership skills and artistic vision. For example: "With over 15 years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films..."
+                    </p>
                 </div>
             </div>
         </section>
