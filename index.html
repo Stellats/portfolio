@@ -109,7 +109,6 @@
         
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
-        /* MODIFIED: Reverted to a div, cursor:pointer provides the affordance */
         .portfolio-item { 
             background: var(--bg-card); 
             border-radius: 8px; 
@@ -197,7 +196,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me PUB1</h2>
+                <h2>About Me</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -211,8 +210,9 @@
             <div class="container">
                 <h2>Supervisor Demo Reel</h2>
                 <div class="video-container">
+                    <!-- MODIFIED: Added playsinline=1 to the URL -->
                     <iframe 
-                        src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0" 
+                        src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0&playsinline=1" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
                         allowfullscreen>
@@ -293,7 +293,7 @@
         document.addEventListener("DOMContentLoaded", function() {
 
             // --- PORTFOLIO DATA ---
-            const portfolioData = [
+            let portfolioData = [
                 { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
                 { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
                 { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
@@ -330,17 +330,24 @@
                 { title: "Max Payne", year: 2008, poster: "https://image.tmdb.org/t/p/w500/d2ygrC80V2fVOa9DglW4s2Y2d6I.jpg", videoUrl: "https://www.youtube.com/embed/p_3s5_21pC8" },
                 { title: "The Love Guru", year: 2008, poster: "https://image.tmdb.org/t/p/w500/qVpCa1p82d3jPSASa02xGgI4u3P.jpg", videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM" },
                 { title: "The Incredible Hulk", year: 2008, poster: "https://image.tmdb.org/t/p/w500/gKzYx79y0AQ2L1d9aIeBsb2Vp26.jpg", videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA" },
-            ].map(item => ({
-                ...item,
-                shortDesc: "Contributed to character and creature animation on this feature film.",
-                longDesc: "As an animator on this project, my primary focus was on [Describe your focus, e.g., 'the facial performances of the main digital character'] and [another contribution, e.g., 'key action sequences involving creature locomotion']. I was responsible for taking shots from blocking to final polish, collaborating closely with the rigging and lighting departments to ensure a seamless final product."
-            }));
+            ];
+
+            // --- MODIFIED: Programmatically add 'playsinline=1' to all video URLs ---
+            portfolioData = portfolioData.map(item => {
+                const url = new URL(item.videoUrl);
+                url.searchParams.set('playsinline', '1');
+                return {
+                    ...item,
+                    videoUrl: url.href,
+                    shortDesc: "Contributed to character and creature animation on this feature film.",
+                    longDesc: "As an animator on this project, my primary focus was on [Describe your focus, e.g., 'the facial performances of the main digital character'] and [another contribution, e.g., 'key action sequences involving creature locomotion']. I was responsible for taking shots from blocking to final polish, collaborating closely with the rigging and lighting departments to ensure a seamless final product."
+                };
+            });
             
             // --- DYNAMICALLY GENERATE PORTFOLIO ---
             const portfolioGrid = document.querySelector('.portfolio-grid');
             if (portfolioGrid) {
                 portfolioData.forEach((item, index) => {
-                    // MODIFIED: Create a div, not an anchor tag
                     const portfolioItem = document.createElement('div');
                     portfolioItem.className = 'portfolio-item';
                     portfolioItem.setAttribute('data-index', index);
@@ -387,7 +394,6 @@
             const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
             const showPrevItem = () => openModal((currentIndex - 1 + portfolioData.length) % portfolioData.length);
 
-            // MODIFIED: Simplified click listener, no preventDefault needed
             portfolioGrid.addEventListener('click', (e) => {
                 const item = e.target.closest('.portfolio-item');
                 if (item) {
