@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frankie Stellato - Animation Supervisor</title>
     
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='5' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23f8f9fa'%3EF%3C/text%3E%3Ctext x='50' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23d4af37'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='5' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23f8f9fa'%3EF%3C/text%3E%3Ctext x='50' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23fdfa66'%3ES%3C/text%3E%3C/svg%3E">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +17,11 @@
             --bg-card: #343a40;
             --text-primary: #f8f9fa;
             --text-secondary: #adb5bd;
-            --accent-primary: #d4af37;
-            --accent-hover: #e0c56e;
+            --accent-primary: #e74645; /* Red */
+            --accent-hover: #fb7756;   /* Coral */
+            --btn-bg: #1ac0c6;         /* Teal */
+            --btn-hover-bg: #facd60;   /* Yellow-Gold */
+            --headline-color: #fdfa66; /* Bright Yellow */
             --border-color: #495057;
         }
 
@@ -57,7 +60,7 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .branding-header h1 { margin: 0; font-size: 3rem; color: #ffffff; }
+        .branding-header h1 { margin: 0; font-size: 3rem; color: var(--headline-color); }
         .branding-header p { margin: 5px 0 0 0; font-size: 1.25rem; color: var(--accent-primary); font-weight: 400; }
 
         .sticky-nav {
@@ -73,7 +76,7 @@
         
         .sticky-nav .container { display: flex; justify-content: center; gap: 30px; }
         .sticky-nav a { color: var(--text-primary); text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: color 0.3s; }
-        .sticky-nav a:hover { color: var(--accent-primary); }
+        .sticky-nav a:hover { color: var(--accent-hover); }
 
         .fade-in-section { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
@@ -83,7 +86,6 @@
         section:last-of-type { border-bottom: none; }
         section h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #ffffff; font-weight: 700; }
 
-        /* --- MODIFIED: About Section uses Flexbox for layout --- */
         .about-content {
             display: flex;
             align-items: center;
@@ -95,10 +97,10 @@
             height: 150px;
             object-fit: cover;
             border: 3px solid var(--border-color);
-            flex-shrink: 0; /* Prevents image from shrinking */
+            flex-shrink: 0;
         }
         .about-content p {
-            margin: 0; /* Remove default paragraph margin */
+            margin: 0;
         }
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: auto; background: #000; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
@@ -106,43 +108,32 @@
         .reel-link-container { text-align: center; margin-top: 30px; }
         
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .portfolio-item { background: var(--bg-card); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        
+        /* MODIFIED: Styling the new anchor tag */
+        .portfolio-item { 
+            display: block;
+            text-decoration: none;
+            background: var(--bg-card); 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            cursor: pointer; 
+        }
         .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.4); }
         .portfolio-item .image-wrap { overflow: hidden; }
-        .portfolio-item img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease-out;
-        }
-        /* Responsive fix for mobile */
-        @media (max-width: 900px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .portfolio-item img {
-                height: 180px;
-                max-height: 40vw;
-            }
-        }
-        @media (max-width: 600px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .portfolio-item img {
-                height: 120px;
-                max-height: 50vw;
-            }
-        }
+        .portfolio-item img { width: 100%; height: 420px; object-fit: cover; display: block; transition: transform 0.4s ease-out; }
+        .portfolio-item:hover img { transform: scale(1.05); }
         .portfolio-info { padding: 20px; min-height: 120px; }
         .portfolio-info h3 { font-size: 1.25rem; margin-top: 0; font-weight: 600; color: var(--accent-primary); }
         .portfolio-info p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); }
 
         .contact-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .contact-content p { font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; }
-        .btn { display: inline-block; background-color: var(--accent-primary); color: #121212; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: 700; transition: background-color 0.3s, color 0.3s, transform 0.3s; }
-        .btn:hover { background-color: var(--accent-hover); color: #121212; transform: translateY(-3px); }
+        
+        .btn { display: inline-block; background-color: var(--btn-bg); color: var(--bg-main); padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: 700; transition: background-color 0.3s, color 0.3s, transform 0.3s; }
+        .btn:hover { background-color: var(--btn-hover-bg); color: var(--bg-main); transform: translateY(-3px); }
+        
         .social-links { margin-top: 30px; }
         .social-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s, transform 0.3s; display: inline-block; }
         .social-links a:hover { color: var(--accent-hover); transform: scale(1.1); }
@@ -182,7 +173,6 @@
             .branding-header p { font-size: 1.1rem; }
             .sticky-nav .container { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .sticky-nav a { font-size: 1rem; }
-            /* Updated responsive style for about section */
             .about-content {
                 flex-direction: column;
                 text-align: center;
@@ -209,7 +199,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me - TEST1</h2>
+                <h2>About Me</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -224,7 +214,7 @@
                 <h2>Supervisor Demo Reel</h2>
                 <div class="video-container">
                     <iframe 
-                        src="https://player.vimeo.com/video/415225136?color=d4af37&title=0&byline=0&portrait=0" 
+                        src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
                         allowfullscreen>
@@ -306,9 +296,9 @@
 
             // --- PORTFOLIO DATA ---
             const portfolioData = [
-                { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/5iHh1ZQKQwA" }, // Official teaser or placeholder
-                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/8Qn_spdM5Zg" }, // Official teaser or placeholder
-                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/1FvVhJwzGdY" }, // Official teaser or placeholder
+                { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
+                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
+                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
                 { title: "Ant-Man and the Wasp: Quantumania", year: 2023, poster: "https://image.tmdb.org/t/p/w500/gIAnooUWGP2I3F2a37C3wVfU9xM.jpg", videoUrl: "https://www.youtube.com/embed/ZlNFpri-Y40" },
                 { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irDe3GP3gCz6L6UmuB.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA" },
                 { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8e84boeOaXi.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI" },
@@ -343,7 +333,6 @@
                 { title: "The Love Guru", year: 2008, poster: "https://image.tmdb.org/t/p/w500/qVpCa1p82d3jPSASa02xGgI4u3P.jpg", videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM" },
                 { title: "The Incredible Hulk", year: 2008, poster: "https://image.tmdb.org/t/p/w500/gKzYx79y0AQ2L1d9aIeBsb2Vp26.jpg", videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA" },
             ].map(item => ({
-                // Add default descriptions to every item automatically
                 ...item,
                 shortDesc: "Contributed to character and creature animation on this feature film.",
                 longDesc: "As an animator on this project, my primary focus was on [Describe your focus, e.g., 'the facial performances of the main digital character'] and [another contribution, e.g., 'key action sequences involving creature locomotion']. I was responsible for taking shots from blocking to final polish, collaborating closely with the rigging and lighting departments to ensure a seamless final product."
@@ -353,9 +342,12 @@
             const portfolioGrid = document.querySelector('.portfolio-grid');
             if (portfolioGrid) {
                 portfolioData.forEach((item, index) => {
-                    const portfolioItem = document.createElement('div');
+                    // MODIFIED: Create an anchor tag instead of a div
+                    const portfolioItem = document.createElement('a');
                     portfolioItem.className = 'portfolio-item';
                     portfolioItem.setAttribute('data-index', index);
+                    portfolioItem.href = item.videoUrl; // Add href for fallback and context
+                    
                     portfolioItem.innerHTML = `
                         <div class="image-wrap">
                             <img src="${item.poster}" alt="Poster for ${item.title}" loading="lazy">
@@ -390,7 +382,7 @@
             };
 
             const closeModal = () => {
-                modalVideo.src = ""; // Stops video from playing in background
+                modalVideo.src = ""; 
                 document.body.classList.remove('modal-open');
                 modal.classList.remove('is-open');
             };
@@ -398,9 +390,11 @@
             const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
             const showPrevItem = () => openModal((currentIndex - 1 + portfolioData.length) % portfolioData.length);
 
+            // MODIFIED: Event listener with event.preventDefault()
             portfolioGrid.addEventListener('click', (e) => {
                 const item = e.target.closest('.portfolio-item');
                 if (item) {
+                    e.preventDefault(); // This is the crucial line that fixes the mobile issue
                     openModal(parseInt(item.getAttribute('data-index'), 10));
                 }
             });
