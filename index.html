@@ -109,10 +109,8 @@
         
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
-        /* MODIFIED: Styling the new anchor tag */
+        /* MODIFIED: Reverted to a div, cursor:pointer provides the affordance */
         .portfolio-item { 
-            display: block;
-            text-decoration: none;
             background: var(--bg-card); 
             border-radius: 8px; 
             overflow: hidden; 
@@ -342,11 +340,10 @@
             const portfolioGrid = document.querySelector('.portfolio-grid');
             if (portfolioGrid) {
                 portfolioData.forEach((item, index) => {
-                    // MODIFIED: Create an anchor tag instead of a div
-                    const portfolioItem = document.createElement('a');
+                    // MODIFIED: Create a div, not an anchor tag
+                    const portfolioItem = document.createElement('div');
                     portfolioItem.className = 'portfolio-item';
                     portfolioItem.setAttribute('data-index', index);
-                    portfolioItem.href = item.videoUrl; // Add href for fallback and context
                     
                     portfolioItem.innerHTML = `
                         <div class="image-wrap">
@@ -390,11 +387,10 @@
             const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
             const showPrevItem = () => openModal((currentIndex - 1 + portfolioData.length) % portfolioData.length);
 
-            // MODIFIED: Event listener with event.preventDefault()
+            // MODIFIED: Simplified click listener, no preventDefault needed
             portfolioGrid.addEventListener('click', (e) => {
                 const item = e.target.closest('.portfolio-item');
                 if (item) {
-                    e.preventDefault(); // This is the crucial line that fixes the mobile issue
                     openModal(parseInt(item.getAttribute('data-index'), 10));
                 }
             });
