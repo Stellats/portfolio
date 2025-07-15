@@ -156,14 +156,13 @@
         .modal-close { font-size: 2rem; color: var(--text-secondary); cursor: pointer; background: none; border: none; line-height: 1; }
         .modal-close:hover { color: var(--text-primary); }
         .modal-body { display: flex; gap: 20px; overflow: hidden; }
-        .modal-video-wrap { flex: 2; min-width: 0; position: relative; background: #000; border-radius: 8px; } /* MODIFIED */
+        .modal-video-wrap { flex: 2; min-width: 0; position: relative; background: #000; border-radius: 8px; }
         .modal-details { flex: 1; min-width: 0; overflow-y: auto; color: var(--text-secondary); }
         .modal-details h4 { margin-top: 0; color: var(--text-primary); }
         .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% - 20px); left: 10px; display: flex; justify-content: space-between; pointer-events: none; }
         .modal-nav-btn { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: 50%; color: white; width: 50px; height: 50px; font-size: 2rem; cursor: pointer; pointer-events: all; transition: background-color 0.2s; }
         .modal-nav-btn:hover { background: rgba(0, 0, 0, 0.7); }
         
-        /* --- NEW: Styles for the video thumbnail and play button --- */
         .modal-video-thumbnail {
             width: 100%; height: 100%;
             object-fit: cover;
@@ -181,7 +180,7 @@
             border: 2px solid white;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            pointer-events: none; /* Pass clicks through to the image */
+            pointer-events: none;
             transition: transform 0.2s, background-color 0.2s;
         }
         .modal-play-button::after {
@@ -195,7 +194,7 @@
         }
         .modal-video-wrap:hover .modal-play-button {
             transform: translate(-50%, -50%) scale(1.1);
-            background-color: rgba(231, 70, 69, 0.8); /* Use accent red on hover */
+            background-color: rgba(231, 70, 69, 0.8);
         }
 
 
@@ -232,7 +231,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me UPDATE</h2>
+                <h2>About Me</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -306,7 +305,6 @@
                 <button class="modal-close" id="modal-close-btn">×</button>
             </div>
             <div class="modal-body">
-                <!-- MODIFIED: This is now a container for either the thumbnail or the iframe -->
                 <div class="modal-video-wrap" id="modal-video-container">
                     <!-- Content here will be managed by JavaScript -->
                 </div>
@@ -406,18 +404,22 @@
             }
             
             function createIframe(item) {
-                // Ensure the URL has the correct parameters for inline and auto-play
                 let videoUrl = item.videoUrl;
-                if (!videoUrl.includes('placeholder')) {
-                     try {
+                // --- MODIFIED: Added check to prevent crash on invalid URL ---
+                if (videoUrl && !videoUrl.includes('placeholder')) {
+                    try {
                         const url = new URL(videoUrl);
                         url.searchParams.set('playsinline', '1');
                         url.searchParams.set('autoplay', '1');
                         videoUrl = url.href;
-                    } catch(e) {
-                        // The placeholder URL will fail, which is fine.
-                        console.error("Invalid video URL:", videoUrl);
+                    } catch (e) {
+                        console.error("Skipping invalid video URL:", videoUrl, e);
+                        createThumbnail(item); // Fallback to thumbnail if URL is bad
+                        return;
                     }
+                } else {
+                    createThumbnail(item); // Show thumbnail if URL is a placeholder
+                    return;
                 }
                
                 modalVideoContainer.innerHTML = `
@@ -433,14 +435,14 @@
                 modalTitle.textContent = `${item.title} (${item.year})`;
                 modalDescription.textContent = item.longDesc;
                 
-                createThumbnail(item); // Start by showing the thumbnail
+                createThumbnail(item);
 
                 document.body.classList.add('modal-open');
                 modal.classList.add('is-open');
             };
 
             const closeModal = () => {
-                modalVideoContainer.innerHTML = ""; // Clear the video container
+                modalVideoContainer.innerHTML = "";
                 document.body.classList.remove('modal-open');
                 modal.classList.remove('is-open');
             };
@@ -457,10 +459,7 @@
             
             modalVideoContainer.addEventListener('click', () => {
                 const item = portfolioData[currentIndex];
-                // Only create the iframe if it's not a placeholder
-                if (item.videoUrl && !item.videoUrl.includes('placeholder')) {
-                    createIframe(item);
-                }
+                createIframe(item);
             });
 
             closeBtn.addEventListener('click', closeModal);
