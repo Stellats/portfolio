@@ -231,7 +231,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me</h2>
+                <h2>About Me BUILD</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -324,6 +324,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
+            // --- THIS DATA IS SAFE TO USE AND WILL NOT CRASH ---
             const portfolioData = [
                 { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
                 { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
@@ -405,20 +406,15 @@
             
             function createIframe(item) {
                 let videoUrl = item.videoUrl;
-                // --- MODIFIED: Added check to prevent crash on invalid URL ---
-                if (videoUrl && !videoUrl.includes('placeholder')) {
-                    try {
-                        const url = new URL(videoUrl);
-                        url.searchParams.set('playsinline', '1');
-                        url.searchParams.set('autoplay', '1');
-                        videoUrl = url.href;
-                    } catch (e) {
-                        console.error("Skipping invalid video URL:", videoUrl, e);
-                        createThumbnail(item); // Fallback to thumbnail if URL is bad
-                        return;
-                    }
-                } else {
-                    createThumbnail(item); // Show thumbnail if URL is a placeholder
+                
+                // --- MODIFIED: Safely add parameters ONLY to valid URLs ---
+                if (videoUrl && videoUrl.includes('youtube.com/embed/') && !videoUrl.includes('placeholder')) {
+                    const url = new URL(videoUrl);
+                    url.searchParams.set('autoplay', '1');
+                    url.searchParams.set('playsinline', '1');
+                    videoUrl = url.href;
+                } else if (videoUrl.includes('placeholder')) {
+                    // Do nothing for placeholders, let the thumbnail stay.
                     return;
                 }
                
