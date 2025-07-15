@@ -231,11 +231,12 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me BUILD</h2>
+                <h2>About Me</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
-                        With over 15 years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films. My passion lies in crafting compelling character and creature performances, overseeing the animation pipeline from concept to final shot. I thrive on mentoring artists and pushing the boundaries of visual storytelling to create unforgettable cinematic moments.
+                        With over 15 
+                        years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films. My passion lies in crafting compelling character and creature performances, overseeing the animation pipeline from concept to final shot. I thrive on mentoring artists and pushing the boundaries of visual storytelling to create unforgettable cinematic moments.
                     </p>
                 </div>
             </div>
@@ -324,49 +325,321 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-            // --- THIS DATA IS SAFE TO USE AND WILL NOT CRASH ---
+            // --- Project Details ---
             const portfolioData = [
-                { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
-                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
-                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
-                { title: "Ant-Man and the Wasp: Quantumania", year: 2023, poster: "https://image.tmdb.org/t/p/w500/gIAnooUWGP2I3F2a37C3wVfU9xM.jpg", videoUrl: "https://www.youtube.com/embed/ZlNFpri-Y40" },
-                { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irDe3GP3gCz6L6UmuB.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA" },
-                { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8e84boeOaXi.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI" },
-                { title: "Chaos Walking", year: 2021, poster: "https://image.tmdb.org/t/p/w500/unjqa2k3S2pVEle5iY2V32E2I4v.jpg", videoUrl: "https://www.youtube.com/embed/nRf4ZgzHoVw" },
-                { title: "Aquaman", year: 2018, poster: "https://image.tmdb.org/t/p/w500/xLPff2OFyD4J9tXfM4m8vtv1v1s.jpg", videoUrl: "https://www.youtube.com/embed/WDkg3h8PCVU" },
-                { title: "Shazam!", year: 2019, poster: "https://image.tmdb.org/t/p/w500/ryMXD3A2TqHlS2L2S2n3zIu4a2s.jpg", videoUrl: "https://www.youtube.com/embed/go6GEIrcvFY" },
-                { title: "Ant-Man and the Wasp", year: 2018, poster: "https://image.tmdb.org/t/p/w500/6P3c80EOm7BodK2WdHpzXDjL5v7.jpg", videoUrl: "https://www.youtube.com/embed/8_rTIAOohas" },
-                { title: "Avengers: Infinity War", year: 2018, poster: "https://image.tmdb.org/t/p/w500/7WsyChQLEftloC9zUsUD1OMkKnG.jpg", videoUrl: "https://www.youtube.com/embed/6ZfuNTqbHE8" },
-                { title: "Spider-Man: Homecoming", year: 2017, poster: "https://image.tmdb.org/t/p/w500/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg", videoUrl: "https://www.youtube.com/embed/n9DwoQ7HWvI" },
-                { title: "Beauty and the Beast", year: 2017, poster: "https://image.tmdb.org/t/p/w500/hcz4x12tIS321h2agM1aB21IqB8.jpg", videoUrl: "https://www.youtube.com/embed/e3Nl_TCQXuw" },
-                { title: "Independence Day: Resurgence", year: 2016, poster: "https://image.tmdb.org/t/p/w500/96Bf7V_RKK4aGeyAT1y0h2y3k3a.jpg", videoUrl: "https://www.youtube.com/embed/RfJgT89hEME" },
-                { title: "Deadpool", year: 2016, poster: "https://image.tmdb.org/t/p/w500/fSRb7vyIP8rQpL0I47P3qUsADva.jpg", videoUrl: "https://www.youtube.com/embed/ONHBaC-pfsk" },
-                { title: "Pixels", year: 2015, poster: "https://image.tmdb.org/t/p/w500/tEyV2n1l5sHhX6H4QxNOvY22h32.jpg", videoUrl: "https://www.youtube.com/embed/XAHpr_dbOLw" },
-                { title: "Night at the Museum: Secret of the Tomb", year: 2014, poster: "https://image.tmdb.org/t/p/w500/6SjC542K5l9iFli3iS6g6g1gGz.jpg", videoUrl: "https://www.youtube.com/embed/Hrkt_wSg1-I" },
-                { title: "Maleficent", year: 2014, poster: "https://image.tmdb.org/t/p/w500/1s69xS5s33fE93yA3e4i0sEna1A.jpg", videoUrl: "https://www.youtube.com/embed/n0OFH4xpPr4" },
-                { title: "Ender's Game", year: 2013, poster: "https://image.tmdb.org/t/p/w500/bC4s25aed0332Dq24aA2s22k2sC.jpg", videoUrl: "https://www.youtube.com/embed/2UNWLgY-wuo" },
-                { title: "The Watch", year: 2012, poster: "https://image.tmdb.org/t/p/w500/b5LpXwGK4iCcv4s5sC4A1k4aW9b.jpg", videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE" },
-                { title: "Jack the Giant Slayer", year: 2013, poster: "https://image.tmdb.org/t/p/w500/29nBTTp32T6W53r2Qc2o54y1s0G.jpg", videoUrl: "https://www.youtube.com/embed/plvPu2M5e-w" },
-                { title: "Resident Evil: Retribution", year: 2012, poster: "https://image.tmdb.org/t/p/w500/k2LStSoGu2z2M2fT6Ofw5VbS96m.jpg", videoUrl: "https://www.youtube.com/embed/T_4hSHg1i6o" },
-                { title: "The Three Musketeers", year: 2011, poster: "https://image.tmdb.org/t/p/w500/aHk5r1d7nI7mpL2EMpkUari0i0V.jpg", videoUrl: "https://www.youtube.com/embed/mQd3Mw_Hl4U" },
-                { title: "Silent Hill: Revelation", year: 2012, poster: "https://image.tmdb.org/t/p/w500/u3GDT3lCq42aT7vHqgCg3a3c26G.jpg", videoUrl: "https://www.youtube.com/embed/Kmw-Vf_kO1M" },
-                { title: "Hanna", year: 2011, poster: "https://image.tmdb.org/t/p/w500/uI8flsJ20gG45y00s2ALsQd0m3s.jpg", videoUrl: "https://www.youtube.com/embed/16402QZso1w" },
-                { title: "A Dangerous Method", year: 2011, poster: "https://image.tmdb.org/t/p/w500/wP1N5uD414h4j4iAg4SdvA34g25.jpg", videoUrl: "https://www.youtube.com/embed/664_1a0z-aE" },
-                { title: "Resident Evil: Afterlife", year: 2010, poster: "https://image.tmdb.org/t/p/w500/7qj42V2I3Od9x1l5n4s2lkvRZzG.jpg", videoUrl: "https://www.youtube.com/embed/gq3z4y532-E" },
-                { title: "Knight and Day", year: 2010, poster: "https://image.tmdb.org/t/p/w500/yHgrw0I2j2aDzt4f4p2TzYj2T4.jpg", videoUrl: "https://www.youtube.com/embed/gbs42eZYC6s" },
-                { title: "Cats and Dogs: The Revenge of Kitty Galore", year: 2010, poster: "https://image.tmdb.org/t/p/w500/4n25yZ39VjoX2I3t2aO3pG30Xv4.jpg", videoUrl: "https://www.youtube.com/embed/81nC4SAnlA4" },
-                { title: "The Book of Eli", year: 2010, poster: "https://image.tmdb.org/t/p/w500/eOa2L1xOF1l42i1sWk0e1YmS1Jc.jpg", videoUrl: "https://www.youtube.com/embed/zSMHm80FwO8" },
-                { title: "Aliens in the Attic", year: 2009, poster: "https://image.tmdb.org/t/p/w500/7m6KaddbY142d1i4sA4iGzT8dD.jpg", videoUrl: "https://www.youtube.com/embed/q48iGSCn01U" },
-                { title: "X-Men Origins: Wolverine", year: 2009, poster: "https://image.tmdb.org/t/p/w500/vUv6Jt5x60b9sV5K3n02s2vj1s.jpg", videoUrl: "https://www.youtube.com/embed/S6k0ke8T_MA" },
-                { title: "Dragonball Evolution", year: 2009, poster: "https://image.tmdb.org/t/p/w500/dJ2dYJGuF3yQlwq3m73D1J2Jb0k.jpg", videoUrl: "https://www.youtube.com/embed/yQ0-Ua6aU-A" },
-                { title: "Max Payne", year: 2008, poster: "https://image.tmdb.org/t/p/w500/d2ygrC80V2fVOa9DglW4s2Y2d6I.jpg", videoUrl: "https://www.youtube.com/embed/p_3s5_21pC8" },
-                { title: "The Love Guru", year: 2008, poster: "https://image.tmdb.org/t/p/w500/qVpCa1p82d3jPSASa02xGgI4u3P.jpg", videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM" },
-                { title: "The Incredible Hulk", year: 2008, poster: "https://image.tmdb.org/t/p/w500/gKzYx79y0AQ2L1d9aIeBsb2Vp26.jpg", videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA" },
-            ].map(item => ({
-                ...item,
-                shortDesc: "Contributed to character and creature animation on this feature film.",
-                longDesc: "As an animator on this project, my primary focus was on [Describe your focus, e.g., 'the facial performances of the main digital character'] and [another contribution, e.g., 'key action sequences involving creature locomotion']. I was responsible for taking shots from blocking to final polish, collaborating closely with the rigging and lighting departments to ensure a seamless final product."
-            }));
+                { title: "Fantastic Four: First Steps", 
+                year: 2025, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/x26MtUlwtWD26d0G0FXcppxCJio.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=18QQWa5MEcs", 
+                shortDesc: "Senior Animation Supervisor", 
+                longDesc: "Supervised a team of 39 Animators in several sequences of The Thing, Mr.Fantastic, Franklin and Herbie. The primary focus on this show was body mechanics and facial animation." },
+
+
+                { title: "Captain America: Brave New World", 
+                year: 2025, 
+                poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=1pHDWnXmK7Y", 
+                shortDesc: "temp short", 
+                longDesc: "Temp Long Cap" },
+
+
+                { title: "The Electric State", 
+                year: 2024, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sI2NiMU8o65hmIMY0JI9CjJ0p7f.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=KpN98z8Kf5E", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Ant-Man and the Wasp: Quantumania", 
+                year: 2023, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=ZlNFpri-Y40", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Marvel's Secret Invasion", 
+                year: 2025, 
+                poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=Tp_YZNqNBhw&pp=0gcJCfwAo7VqN5tD", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Spider-Man: No Way Home", 
+                year: 2021, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=JfVOs4VSpmA", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Wanda Vision", 
+                year: 2021, 
+                poster: "https://artworks.thetvdb.com/banners/series/362392/posters/5f6a1111c2752.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=sj9J2ecsSpo", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Black Widow", 
+                year: 2021, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFvhB9khUMa30d.jpg", 
+                videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Lost In Space", 
+                year: 2018, 
+                poster: "https://artworks.thetvdb.com/banners/v4/series/343253/posters/61883b3134fd8.jpg", 
+                videoUrl: "https://www.youtube.com/watch?v=fzmM0AB60QQ", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Chaos Walking", 
+                year: 2021, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xAYGdGBGptNkisXRpmhZSry6SPF.jpg", 
+                videoUrl: "https://www.youtube.com/embed/nRf4ZgzHoVw", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Aquaman", 
+                year: 2018, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ufl63EFcc5XpByEV2Ecdw6WJZAI.jpg", 
+                videoUrl: "https://www.youtube.com/embed/WDkg3h8PCVU", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Shazam!", 
+                year: 2019, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xnopI5Xtky18MPhK40cZAGAOVeV.jpg", 
+                videoUrl: "https://www.youtube.com/embed/go6GEIrcvFY", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Ant-Man and the Wasp", 
+                year: 2018, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cFQEO687n1K6umXbInzocxcnAQz.jpg", 
+                videoUrl: "https://www.youtube.com/embed/8_rTIAOohas", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Avengers: Infinity War", 
+                year: 2018, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", 
+                videoUrl: "https://www.youtube.com/embed/6ZfuNTqbHE8", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Spider-Man: Homecoming", 
+                year: 2017, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg", 
+                videoUrl: "https://www.youtube.com/embed/n9DwoQ7HWvI", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Beauty and the Beast", 
+                year: 2017, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hKegSKIDep2ewJWPUQD7u0KqFIp.jpg", 
+                videoUrl: "https://www.youtube.com/embed/e3Nl_TCQXuw", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Independence Day: Resurgence", 
+                year: 2016, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9S50foUIYGwiNPWOxi1WJF6IPwI.jpg", 
+                videoUrl: "https://www.youtube.com/embed/RfJgT89hEME", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Deadpool", 
+                year: 2016, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3E53WEZJqP6aM84D8CckXx4pIHw.jpg", 
+                videoUrl: "https://www.youtube.com/embed/ONHBaC-pfsk", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Pixels", 
+                year: 2015, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d26S5EfVXLNxRXqyFy1yyl3qRq3.jpg", 
+                videoUrl: "https://www.youtube.com/embed/XAHpr_dbOLw", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Night at the Museum: Secret of the Tomb", 
+                year: 2014, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xwgy305K6qDs3D20xUO4OZu1HPY.jpg", 
+                videoUrl: "https://www.youtube.com/embed/Hrkt_wSg1-I", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Maleficent", 
+                year: 2014, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bDG3yei6AJlEAK3A5wN7RwFXQ7V.jpg", 
+                videoUrl: "https://www.youtube.com/embed/n0OFH4xpPr4", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Ender's Game", 
+                year: 2013, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vmd3CNeG2B9FXsit61oc7oxabej.jpg", 
+                videoUrl: "https://www.youtube.com/embed/2UNWLgY-wuo", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "The Watch", 
+                year: 2012, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwfwC19.jpg", 
+                videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Jack the Giant Slayer", 
+                year: 2013, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9jSI7saUX9Qz0JLh19jX2ulEwL7.jpg", 
+                videoUrl: "https://www.youtube.com/embed/plvPu2M5e-w", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Resident Evil: Retribution", 
+                year: 2012, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ohdUDWVlcbuWphaLu6wS91xdJ73.jpg", 
+                videoUrl: "https://www.youtube.com/embed/T_4hSHg1i6o", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "The Three Musketeers", 
+                year: 2011, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/woCADkkDIIKrOMEokbFOEsAYtUa.jpg", 
+                videoUrl: "https://www.youtube.com/embed/mQd3Mw_Hl4U", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Silent Hill: Revelation", 
+                year: 2012, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xBC7bHZ5UglTw4LMd2lTSgXvQXl.jpg", 
+                videoUrl: "https://www.youtube.com/embed/Kmw-Vf_kO1M", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Hanna", 
+                year: 2011, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gRvxRMtejJa9jjfDDUibUIfIJbP.jpg", 
+                videoUrl: "https://www.youtube.com/embed/16402QZso1w", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "A Dangerous Method", 
+                year: 2011, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7TPYtzq9ABkfED1JB0tRASamL4z.jpg", 
+                videoUrl: "https://www.youtube.com/embed/664_1a0z-aE", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Resident Evil: Afterlife", 
+                year: 2010, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xaEHOuIkoTzHQIiex0Ys306Ky05.jpg", 
+                videoUrl: "https://www.youtube.com/embed/gq3z4y532-E", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Knight and Day", 
+                year: 2010, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/phhp52CZZJiGYmiOTp9ZBDkGHB3.jpg", 
+                videoUrl: "https://www.youtube.com/embed/gbs42eZYC6s", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Cats and Dogs: The Revenge of Kitty Galore", 
+                year: 2010, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nTsZT66I4U3aS9ezLdOKacfvo8T.jpg", 
+                videoUrl: "https://www.youtube.com/embed/81nC4SAnlA4", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "The Book of Eli", 
+                year: 2010, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1H1y9ZiqNFaLgQiRDDZLA55PviW.jpg", 
+                videoUrl: "https://www.youtube.com/embed/zSMHm80FwO8", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Aliens in the Attic", 
+                year: 2009, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bb8ym5zSRGmhNx3gyDnzSN2waS4.jpg", 
+                videoUrl: "https://www.youtube.com/embed/q48iGSCn01U", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "X-Men Origins: Wolverine", 
+                year: 2009, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yj8LbTju1p7CUJg7US2unSBk33s.jpg", 
+                videoUrl: "https://www.youtube.com/embed/S6k0ke8T_MA", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Dragonball Evolution", 
+                year: 2009, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ztlqrY7VgFIFmtzVsh3TPYiXCdF.jpg", 
+                videoUrl: "https://www.youtube.com/embed/yQ0-Ua6aU-A", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "Max Payne", 
+                year: 2008, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3cWnCG5NyXJYARO2hmNqfbbgrMA.jpg", 
+                videoUrl: "https://www.youtube.com/embed/p_3s5_21pC8", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "The Love Guru", 
+                year: 2008, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sp8AV64ftAZCT9uWfgbCb3olGDW.jpg", 
+                videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+                { title: "The Incredible Hulk", 
+                year: 2008, 
+                poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg", 
+                videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA", 
+                shortDesc: "temp short", 
+                longDesc: "temp long" },
+
+
+            ];
             
             const portfolioGrid = document.querySelector('.portfolio-grid');
             if (portfolioGrid) {
@@ -380,7 +653,8 @@
                             <img src="${item.poster}" alt="Poster for ${item.title}" loading="lazy">
                         </div>
                         <div class="portfolio-info">
-                            <h3>${item.title} (${item.year})</h3>
+                            <h3>${item.title} (${item.
+                                year})</h3>
                             <p>${item.shortDesc}</p>
                         </div>`;
                     portfolioGrid.appendChild(portfolioItem);
@@ -407,14 +681,12 @@
             function createIframe(item) {
                 let videoUrl = item.videoUrl;
                 
-                // --- MODIFIED: Safely add parameters ONLY to valid URLs ---
                 if (videoUrl && videoUrl.includes('youtube.com/embed/') && !videoUrl.includes('placeholder')) {
                     const url = new URL(videoUrl);
                     url.searchParams.set('autoplay', '1');
                     url.searchParams.set('playsinline', '1');
                     videoUrl = url.href;
-                } else if (videoUrl.includes('placeholder')) {
-                    // Do nothing for placeholders, let the thumbnail stay.
+                } else {
                     return;
                 }
                
@@ -428,7 +700,8 @@
             const openModal = (index) => {
                 currentIndex = index;
                 const item = portfolioData[currentIndex];
-                modalTitle.textContent = `${item.title} (${item.year})`;
+                modalTitle.textContent = `${item.title} (${item.
+                    year})`;
                 modalDescription.textContent = item.longDesc;
                 
                 createThumbnail(item);
