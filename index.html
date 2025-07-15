@@ -156,12 +156,48 @@
         .modal-close { font-size: 2rem; color: var(--text-secondary); cursor: pointer; background: none; border: none; line-height: 1; }
         .modal-close:hover { color: var(--text-primary); }
         .modal-body { display: flex; gap: 20px; overflow: hidden; }
-        .modal-video-wrap { flex: 2; min-width: 0; }
+        .modal-video-wrap { flex: 2; min-width: 0; position: relative; background: #000; border-radius: 8px; } /* MODIFIED */
         .modal-details { flex: 1; min-width: 0; overflow-y: auto; color: var(--text-secondary); }
         .modal-details h4 { margin-top: 0; color: var(--text-primary); }
         .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% - 20px); left: 10px; display: flex; justify-content: space-between; pointer-events: none; }
         .modal-nav-btn { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: 50%; color: white; width: 50px; height: 50px; font-size: 2rem; cursor: pointer; pointer-events: all; transition: background-color 0.2s; }
         .modal-nav-btn:hover { background: rgba(0, 0, 0, 0.7); }
+        
+        /* --- NEW: Styles for the video thumbnail and play button --- */
+        .modal-video-thumbnail {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            display: block;
+            border-radius: 8px;
+        }
+        .modal-play-button {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px; height: 80px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none; /* Pass clicks through to the image */
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .modal-play-button::after {
+            content: '';
+            display: block;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent white;
+            margin-left: 5px;
+        }
+        .modal-video-wrap:hover .modal-play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(231, 70, 69, 0.8); /* Use accent red on hover */
+        }
+
 
         @media (max-width: 900px) { .modal-body { flex-direction: column; } }
         @media (max-width: 768px) {
@@ -210,9 +246,8 @@
             <div class="container">
                 <h2>Supervisor Demo Reel</h2>
                 <div class="video-container">
-                    <!-- MODIFIED: Added playsinline=1 to the URL -->
                     <iframe 
-                        src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0&playsinline=1" 
+                        src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
                         allowfullscreen>
@@ -271,10 +306,9 @@
                 <button class="modal-close" id="modal-close-btn">×</button>
             </div>
             <div class="modal-body">
-                <div class="modal-video-wrap">
-                    <div class="video-container">
-                        <iframe id="modal-video" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                <!-- MODIFIED: This is now a container for either the thumbnail or the iframe -->
+                <div class="modal-video-wrap" id="modal-video-container">
+                    <!-- Content here will be managed by JavaScript -->
                 </div>
                 <div class="modal-details">
                     <h4>About My Role</h4>
@@ -292,8 +326,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-            // --- PORTFOLIO DATA ---
-            let portfolioData = [
+            const portfolioData = [
                 { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w500/vszg0adS03YssY5iV2I5v222aI7.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
                 { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w500/yFuI1HbfEdwPAg5T9Y6OAM2K1j1.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
                 { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w500/yTrnE1fJ1g9jJSPK52p6b3iVnB.jpg", videoUrl: "https://www.youtube.com/embed/placeholder" },
@@ -330,21 +363,12 @@
                 { title: "Max Payne", year: 2008, poster: "https://image.tmdb.org/t/p/w500/d2ygrC80V2fVOa9DglW4s2Y2d6I.jpg", videoUrl: "https://www.youtube.com/embed/p_3s5_21pC8" },
                 { title: "The Love Guru", year: 2008, poster: "https://image.tmdb.org/t/p/w500/qVpCa1p82d3jPSASa02xGgI4u3P.jpg", videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM" },
                 { title: "The Incredible Hulk", year: 2008, poster: "https://image.tmdb.org/t/p/w500/gKzYx79y0AQ2L1d9aIeBsb2Vp26.jpg", videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA" },
-            ];
-
-            // --- MODIFIED: Programmatically add 'playsinline=1' to all video URLs ---
-            portfolioData = portfolioData.map(item => {
-                const url = new URL(item.videoUrl);
-                url.searchParams.set('playsinline', '1');
-                return {
-                    ...item,
-                    videoUrl: url.href,
-                    shortDesc: "Contributed to character and creature animation on this feature film.",
-                    longDesc: "As an animator on this project, my primary focus was on [Describe your focus, e.g., 'the facial performances of the main digital character'] and [another contribution, e.g., 'key action sequences involving creature locomotion']. I was responsible for taking shots from blocking to final polish, collaborating closely with the rigging and lighting departments to ensure a seamless final product."
-                };
-            });
+            ].map(item => ({
+                ...item,
+                shortDesc: "Contributed to character and creature animation on this feature film.",
+                longDesc: "As an animator on this project, my primary focus was on [Describe your focus, e.g., 'the facial performances of the main digital character'] and [another contribution, e.g., 'key action sequences involving creature locomotion']. I was responsible for taking shots from blocking to final polish, collaborating closely with the rigging and lighting departments to ensure a seamless final product."
+            }));
             
-            // --- DYNAMICALLY GENERATE PORTFOLIO ---
             const portfolioGrid = document.querySelector('.portfolio-grid');
             if (portfolioGrid) {
                 portfolioData.forEach((item, index) => {
@@ -364,10 +388,9 @@
                 });
             }
 
-            // --- MODAL LOGIC ---
             const modal = document.getElementById('portfolio-modal');
             const modalTitle = document.getElementById('modal-title');
-            const modalVideo = document.getElementById('modal-video');
+            const modalVideoContainer = document.getElementById('modal-video-container');
             const modalDescription = document.getElementById('modal-description');
             const closeBtn = document.getElementById('modal-close-btn');
             const nextBtn = document.getElementById('modal-next-btn');
@@ -375,18 +398,49 @@
 
             let currentIndex = 0;
 
+            function createThumbnail(item) {
+                modalVideoContainer.innerHTML = `
+                    <img src="${item.poster}" alt="Play trailer for ${item.title}" class="modal-video-thumbnail">
+                    <div class="modal-play-button"></div>
+                `;
+            }
+            
+            function createIframe(item) {
+                // Ensure the URL has the correct parameters for inline and auto-play
+                let videoUrl = item.videoUrl;
+                if (!videoUrl.includes('placeholder')) {
+                     try {
+                        const url = new URL(videoUrl);
+                        url.searchParams.set('playsinline', '1');
+                        url.searchParams.set('autoplay', '1');
+                        videoUrl = url.href;
+                    } catch(e) {
+                        // The placeholder URL will fail, which is fine.
+                        console.error("Invalid video URL:", videoUrl);
+                    }
+                }
+               
+                modalVideoContainer.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="${videoUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+
             const openModal = (index) => {
                 currentIndex = index;
                 const item = portfolioData[currentIndex];
                 modalTitle.textContent = `${item.title} (${item.year})`;
                 modalDescription.textContent = item.longDesc;
-                modalVideo.src = item.videoUrl;
+                
+                createThumbnail(item); // Start by showing the thumbnail
+
                 document.body.classList.add('modal-open');
                 modal.classList.add('is-open');
             };
 
             const closeModal = () => {
-                modalVideo.src = ""; 
+                modalVideoContainer.innerHTML = ""; // Clear the video container
                 document.body.classList.remove('modal-open');
                 modal.classList.remove('is-open');
             };
@@ -398,6 +452,14 @@
                 const item = e.target.closest('.portfolio-item');
                 if (item) {
                     openModal(parseInt(item.getAttribute('data-index'), 10));
+                }
+            });
+            
+            modalVideoContainer.addEventListener('click', () => {
+                const item = portfolioData[currentIndex];
+                // Only create the iframe if it's not a placeholder
+                if (item.videoUrl && !item.videoUrl.includes('placeholder')) {
+                    createIframe(item);
                 }
             });
 
@@ -413,7 +475,6 @@
                 }
             });
 
-            // --- SCROLL ANIMATION LOGIC ---
             const sections = document.querySelectorAll('.fade-in-section');
             if (sections) {
                 const observer = new IntersectionObserver((entries) => {
