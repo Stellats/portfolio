@@ -105,7 +105,7 @@
 
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: auto; background: #000; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
         .video-container iframe,
-        .video-container img {
+        .video-container img { 
             position: absolute; 
             top: 0; 
             left: 0; 
@@ -130,8 +130,8 @@
         .portfolio-item .image-wrap { 
             position: relative;
             height: 0;
-            padding-bottom: 150%; /* 3:2 aspect ratio (height / width) */
-            background-color: var(--bg-card);
+            padding-bottom: 150%; /* 3:2 Aspect Ratio (height / width) */
+            background-color: var(--bg-card); /* Placeholder color */
         }
         .portfolio-item img { 
             position: absolute;
@@ -199,9 +199,7 @@
             transition: transform 0.2s, background-color 0.2s;
             padding: 10px 20px;
         }
-        .modal-play-button::after {
-            content: '';
-            display: block;
+        .modal-play-button-icon {
             width: 0; height: 0;
             border-style: solid;
             border-width: 15px 0 15px 25px;
@@ -253,7 +251,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me Mobile</h2>
+                <h2>About Me 2</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -346,13 +344,13 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-            // --- Project Details  ---
+            // --- Project Details ---
             const portfolioData = [
                 { title: "Fantastic Four: First Steps", year: 2025, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/x26MtUlwtWD26d0G0FXcppxCJio.jpg", videoUrl: "https://www.youtube.com/embed/placeholder", shortDesc: "Senior Animation Supervisor", longDesc: "Supervised a team of 39 Animators in several sequences of The Thing, Mr.Fantastic, Franklin and Herbie. The primary focus on this show was body mechanics and facial animation." },
                 { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg", videoUrl: "https://www.youtube.com/embed/1pHDWnXmK7Y", shortDesc: "temp short", longDesc: "Temp Long Cap" },
                 { title: "The Electric State", year: 2024, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sI2NiMU8o65hmIMY0JI9CjJ0p7f.jpg", videoUrl: "https://www.youtube.com/embed/KpN98z8Kf5E", shortDesc: "temp short", longDesc: "temp long" },
                 { title: "Ant-Man and the Wasp: Quantumania", year: 2023, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg", videoUrl: "https://www.youtube.com/embed/ZlNFpri-Y40", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Marvel's Secret Invasion", year: 2025, poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", videoUrl: "https://www.youtube.com/embed/Tp_YZNqNBhw", shortDesc: "temp short", longDesc: "temp long" },
+                { title: "Marvel's Secret Invasion", year: 2023, poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", videoUrl: "https://www.youtube.com/embed/Tp_YZNqNBhw", shortDesc: "temp short", longDesc: "temp long" },
                 { title: "Spider-Man: No Way Home", year: 2021, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA", shortDesc: "temp short", longDesc: "temp long" },
                 { title: "WandaVision", year: 2021, poster: "https://artworks.thetvdb.com/banners/series/362392/posters/5f6a1111c2752.jpg", videoUrl: "https://www.youtube.com/embed/sj9J2ecsSpo", shortDesc: "temp short", longDesc: "temp long" },
                 { title: "Black Widow", year: 2021, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFvhB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "temp short", longDesc: "temp long" },
@@ -419,7 +417,6 @@
             let currentIndex = 0;
 
             function createThumbnail(item) {
-                // MODIFIED: This now sits inside the video-container to enforce aspect ratio
                 modalVideoContainer.innerHTML = `
                     <div class="video-container">
                         <img src="${item.poster}" alt="Play trailer for ${item.title}" style="object-fit: cover; cursor: pointer;" />
@@ -434,14 +431,19 @@
             function createIframe(item) {
                 let videoUrl = item.videoUrl;
                 
-                // MODIFIED: Robustly handle both /embed/ and /watch?v= URLs
+                // --- MODIFIED: Robustly handle both /embed/ and /watch?v= URLs ---
                 if (videoUrl && videoUrl.includes('youtube.com') && !videoUrl.includes('placeholder')) {
                     let videoId;
                     if (videoUrl.includes('/embed/')) {
                         videoId = videoUrl.split('/embed/')[1].split('?')[0];
                     } else if (videoUrl.includes('/watch?v=')) {
-                        const urlParams = new URL(videoUrl).searchParams;
-                        videoId = urlParams.get('v');
+                        try {
+                            const urlParams = new URL(videoUrl).searchParams;
+                            videoId = urlParams.get('v');
+                        } catch(e) {
+                             console.error("Invalid 'watch' URL:", videoUrl, e);
+                             return;
+                        }
                     }
                     
                     if (videoId) {
