@@ -229,6 +229,20 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            .container-wide {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -251,7 +265,7 @@
     <main>
         <section id="about" class="fade-in-section">
             <div class="container">
-                <h2>About Me 2</h2>
+                <h2>About Me</h2>
                 <div class="about-content">
                     <img src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
                     <p>
@@ -418,8 +432,8 @@
 
             function createThumbnail(item) {
                 modalVideoContainer.innerHTML = `
-                    <div class="video-container">
-                        <img src="${item.poster}" alt="Play trailer for ${item.title}" style="object-fit: cover; cursor: pointer;" />
+                    <div class="video-container" style="cursor: pointer;">
+                        <img src="${item.poster}" alt="Play trailer for ${item.title}" style="object-fit: cover; pointer-events: none;" />
                         <div class="modal-play-button">
                             <div class="modal-play-button-icon"></div>
                             <span class="modal-play-button-text">Play Trailer</span>
@@ -431,36 +445,47 @@
             function createIframe(item) {
                 let videoUrl = item.videoUrl;
                 
-                // --- MODIFIED: Robustly handle both /embed/ and /watch?v= URLs ---
+                // Handle YouTube URLs
                 if (videoUrl && videoUrl.includes('youtube.com') && !videoUrl.includes('placeholder')) {
                     let videoId;
+                    
+                    // Extract ID from various YouTube URL formats
                     if (videoUrl.includes('/embed/')) {
                         videoId = videoUrl.split('/embed/')[1].split('?')[0];
+                    } else if (videoUrl.includes('youtu.be/')) {
+                        videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
                     } else if (videoUrl.includes('/watch?v=')) {
                         try {
                             const urlParams = new URL(videoUrl).searchParams;
                             videoId = urlParams.get('v');
                         } catch(e) {
-                             console.error("Invalid 'watch' URL:", videoUrl, e);
-                             return;
+                            console.error("Invalid YouTube URL:", videoUrl, e);
+                            // Fallback to opening in new tab
+                            window.open(videoUrl, '_blank');
+                            return;
                         }
                     }
                     
                     if (videoId) {
-                        videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1`;
-                    } else {
-                        return; // Can't find an ID, so do nothing.
+                        // Mobile-friendly embed with playsinline and modestbranding
+                        videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&modestbranding=1&rel=0`;
+                        
+                        // Replace the clicked container with the iframe
+                        const container = modalVideoContainer.querySelector('.video-container');
+                        if (container) {
+                            container.innerHTML = `
+                                <iframe src="${videoUrl}" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen></iframe>
+                            `;
+                        }
+                        return;
                     }
-
-                } else {
-                    return; // Not a valid YouTube link, so do nothing.
                 }
-               
-                modalVideoContainer.innerHTML = `
-                    <div class="video-container">
-                        <iframe src="${videoUrl}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                `;
+                
+                // Fallback for non-YouTube or invalid URLs - open in new tab
+                window.open(videoUrl, '_blank');
             }
 
             const openModal = (index) => {
@@ -491,9 +516,17 @@
                 }
             });
             
-            modalVideoContainer.addEventListener('click', () => {
-                const item = portfolioData[currentIndex];
-                createIframe(item);
+            modalVideoContainer.addEventListener('click', (e) => {
+                const videoContainer = e.target.closest('.video-container');
+                const playButton = e.target.closest('.modal-play-button');
+                
+                if (videoContainer || playButton) {
+                    const item = portfolioData[currentIndex];
+                    // Check if we already have an iframe (to prevent double-click issues)
+                    if (!videoContainer.querySelector('iframe')) {
+                        createIframe(item);
+                    }
+                }
             });
 
             closeBtn.addEventListener('click', closeModal);
