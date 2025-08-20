@@ -266,7 +266,7 @@
 <body>
 
     <header class="branding-header">
-        <h1>Frankie Stellato TEST </h1>
+        <h1>Frankie Stellato</h1>
         <p>Animation Supervisor | Head of Department</p>
     </header>
     
@@ -373,6 +373,18 @@
 
 
     <script>
+
+// Compatibility: ensure fade-in sections are visible on browsers without IntersectionObserver
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    var sections = document.querySelectorAll('.fade-in-section');
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].classList.add('is-visible');
+    }
+  }
+})();
+
+
         document.addEventListener("DOMContentLoaded", function() {
 
             // --- Project Details ---
@@ -574,6 +586,13 @@
             }
         });
     </script>
+
+
+<noscript>
+<style>
+  .fade-in-section { opacity: 1 !important; transform: none !important; }
+</style>
+</noscript>
 
 </body>
 </html>
