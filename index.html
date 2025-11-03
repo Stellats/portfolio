@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frankie Stellato - Animation Supervisor</title>
+    <title>Frankie Stellato - Animation Supervisor FIXED</title>
     
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='5' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23f8f9fa'%3EF%3C/text%3E%3Ctext x='50' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23fdfa66'%3ES%3C/text%3E%3C/svg%3E">
     
@@ -179,6 +179,12 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center;
             z-index: 2000; opacity: 0; transition: opacity 0.3s ease;
+            /* Mobile fixes */
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+            /* Use JavaScript-calculated height for mobile browsers */
+            height: 100vh;
+            height: -webkit-fill-available;
         }
         .modal.is-open { display: flex; opacity: 1; }
         .modal-content {
@@ -186,6 +192,12 @@
             max-width: 90vw; max-height: 90vh; width: 1000px;
             display: flex; flex-direction: column; position: relative;
             transform: scale(0.95); transition: transform 0.3s ease;
+            /* Mobile fixes */
+            margin: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            /* Ensure content is scrollable on mobile */
+            touch-action: pan-y;
         }
         .modal.is-open .modal-content { transform: scale(1); }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
@@ -193,7 +205,7 @@
         .modal-close { font-size: 2rem; color: var(--text-secondary); cursor: pointer; background: none; border: none; line-height: 1; }
         .modal-close:hover { color: var(--text-primary); }
         .modal-body { display: flex; gap: 20px; overflow: hidden; }
-        .modal-video-wrap { flex: 2; min-width: 0; position: relative; background: #000; border-radius: 8px; cursor: pointer; }
+        .modal-video-wrap { flex: 2; min-width: 0; position: relative; background: #000; border-radius: 8px; cursor: pointer; touch-action: manipulation; }
         .modal-details { flex: 1; min-width: 0; overflow-y: auto; color: var(--text-secondary); }
         .modal-details h4 { margin-top: 0; color: var(--text-primary); }
         .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% - 20px); left: 10px; display: flex; justify-content: space-between; pointer-events: none; }
@@ -232,8 +244,52 @@
         }
 
 
-        @media (max-width: 900px) { .modal-body { flex-direction: column; } }
+        @media (max-width: 900px) { 
+            .modal-body { flex-direction: column; } 
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+                width: auto;
+                padding: 15px;
+            }
+        }
         @media (max-width: 768px) {
+            .modal {
+                /* Better mobile viewport handling */
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+            .modal-content {
+                max-width: 100vw;
+                max-height: 100vh;
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                padding: 15px;
+            }
+            .modal-body {
+                gap: 15px;
+            }
+            .modal-video-wrap {
+                min-height: 200px;
+                aspect-ratio: 16/9;
+            }
+            .modal-details {
+                max-height: 40vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .modal-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
             .branding-header { padding: 30px 20px; }
             .branding-header h1 { font-size: 2.5rem; }
             .branding-header p { font-size: 1.1rem; }
@@ -517,6 +573,13 @@
                 window.open(videoUrl, '_blank');
             }
 
+            // Fix viewport height for mobile browsers
+            function setModalHeight() {
+                if (window.innerHeight) {
+                    modal.style.height = window.innerHeight + 'px';
+                }
+            }
+
             const openModal = (index) => {
                 currentIndex = index;
                 const item = portfolioData[currentIndex];
@@ -525,14 +588,42 @@
                 
                 createThumbnail(item);
 
+                // Set modal height for mobile browsers
+                setModalHeight();
+                
+                // Prevent body scroll
                 document.body.classList.add('modal-open');
+                
+                // Prevent iOS bounce scrolling
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${window.scrollY}px`;
+                document.body.style.width = '100%';
+                
                 modal.classList.add('is-open');
+                
+                // Recalculate on orientation change
+                window.addEventListener('resize', setModalHeight);
+                window.addEventListener('orientationchange', setModalHeight);
             };
 
             const closeModal = () => {
                 modalVideoContainer.innerHTML = "";
                 document.body.classList.remove('modal-open');
+                
+                // Restore body scroll position
+                const scrollY = document.body.style.top;
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                if (scrollY) {
+                    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+                }
+                
                 modal.classList.remove('is-open');
+                
+                // Remove event listeners
+                window.removeEventListener('resize', setModalHeight);
+                window.removeEventListener('orientationchange', setModalHeight);
             };
             
             const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
@@ -545,23 +636,72 @@
                 }
             });
             
-            modalVideoContainer.addEventListener('click', (e) => {
+            // Handle both click and touch events for better mobile support
+            function handleVideoPlay(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
                 const videoContainer = e.target.closest('.video-container');
                 const playButton = e.target.closest('.modal-play-button');
                 
                 if (videoContainer || playButton) {
                     const item = portfolioData[currentIndex];
-                    // Check if we already have an iframe (to prevent double-click issues)
+                    // Check if we already have an iframe (to prevent double-loading)
                     if (!videoContainer.querySelector('iframe')) {
                         createIframe(item);
                     }
                 }
-            });
+            }
+            
+            modalVideoContainer.addEventListener('click', handleVideoPlay);
+            // Add touch support for mobile
+            modalVideoContainer.addEventListener('touchend', function(e) {
+                // Only trigger if it's a tap (not a swipe)
+                if (e.target === e.currentTarget || e.target.closest('.video-container') || e.target.closest('.modal-play-button')) {
+                    handleVideoPlay(e);
+                }
+            }, { passive: false });
 
-            closeBtn.addEventListener('click', closeModal);
-            nextBtn.addEventListener('click', showNextItem);
-            prevBtn.addEventListener('click', showPrevItem);
-            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            // Handle close button with touch support
+            function handleClose() {
+                closeModal();
+            }
+            closeBtn.addEventListener('click', handleClose);
+            closeBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                handleClose();
+            }, { passive: false });
+            
+            // Handle navigation buttons with touch support
+            function handleNext(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                showNextItem();
+            }
+            function handlePrev(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                showPrevItem();
+            }
+            
+            nextBtn.addEventListener('click', handleNext);
+            nextBtn.addEventListener('touchend', handleNext, { passive: false });
+            prevBtn.addEventListener('click', handlePrev);
+            prevBtn.addEventListener('touchend', handlePrev, { passive: false });
+            
+            // Close modal when clicking outside (with touch support)
+            function handleModalBackdrop(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            }
+            modal.addEventListener('click', handleModalBackdrop);
+            modal.addEventListener('touchend', function(e) {
+                if (e.target === modal) {
+                    e.preventDefault();
+                    closeModal();
+                }
+            }, { passive: false });
             document.addEventListener('keydown', (e) => {
                 if (modal.classList.contains('is-open')) {
                     if (e.key === 'Escape') closeModal();
