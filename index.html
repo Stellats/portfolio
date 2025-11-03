@@ -219,15 +219,18 @@
                 height: -webkit-fill-available !important;
                 background: rgba(0, 0, 0, 0.95) !important;
                 z-index: 99999 !important;
-                display: none !important;
+                /* Don't set display: none here - let .is-open control it */
             }
             .modal.is-open {
                 display: flex !important;
                 opacity: 1 !important;
                 visibility: visible !important;
+                pointer-events: auto !important;
             }
             .modal-content {
                 transition: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
         }
         .modal-content {
@@ -319,11 +322,13 @@
                 background: rgba(0, 0, 0, 0.95) !important;
                 z-index: 9999 !important;
                 transition: none !important;
+                /* Remove display: none from base .modal rule to allow .is-open to work */
             }
             .modal.is-open {
                 display: flex !important;
                 opacity: 1 !important;
                 visibility: visible !important;
+                pointer-events: auto !important;
             }
             .modal-content {
                 max-width: 100vw !important;
@@ -336,11 +341,14 @@
                 visibility: visible !important;
                 transform: scale(1) !important;
                 background: #343a40 !important;
+                background-color: #343a40 !important;
                 display: flex !important;
                 flex-direction: column !important;
                 box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
                 color: #f8f9fa !important;
                 transition: none !important;
+                position: relative !important;
+                z-index: 100000 !important;
             }
             .modal-header h3 {
                 color: #e74645 !important;
@@ -374,6 +382,8 @@
                 flex: 1 1 auto;
                 display: block !important;
                 visibility: visible !important;
+                opacity: 1 !important;
+                background: #000 !important;
             }
             .modal-details {
                 max-height: 40vh;
@@ -382,10 +392,12 @@
                 flex: 1 1 auto;
                 display: block !important;
                 visibility: visible !important;
+                opacity: 1 !important;
             }
             .modal-header {
                 display: flex !important;
                 visibility: visible !important;
+                opacity: 1 !important;
             }
             .modal-nav-btn {
                 width: 40px;
@@ -393,6 +405,8 @@
                 font-size: 1.5rem;
                 visibility: visible !important;
                 opacity: 1 !important;
+                background: rgba(0, 0, 0, 0.6) !important;
+                color: white !important;
             }
             .branding-header { padding: 30px 20px; }
             .branding-header h1 { font-size: 2.5rem; }
