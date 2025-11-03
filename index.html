@@ -192,6 +192,15 @@
             opacity: 1 !important; 
             visibility: visible !important;
         }
+        /* Remove transitions on mobile for immediate visibility */
+        @media (max-width: 768px) {
+            .modal {
+                transition: none !important;
+            }
+            .modal-content {
+                transition: none !important;
+            }
+        }
         .modal-content {
             background: var(--bg-card); padding: 20px; border-radius: 8px;
             max-width: 90vw; max-height: 90vh; width: 1000px;
@@ -278,8 +287,9 @@
                 width: 100vw !important;
                 height: 100vh !important;
                 height: -webkit-fill-available !important;
-                background: rgba(0, 0, 0, 0.9) !important;
-                z-index: 2000 !important;
+                background: rgba(0, 0, 0, 0.95) !important;
+                z-index: 9999 !important;
+                transition: none !important;
             }
             .modal.is-open {
                 display: flex !important;
@@ -296,10 +306,32 @@
                 opacity: 1 !important;
                 visibility: visible !important;
                 transform: scale(1) !important;
-                background: var(--bg-card) !important;
+                background: #343a40 !important;
                 display: flex !important;
                 flex-direction: column !important;
-                box-shadow: none !important;
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+                color: #f8f9fa !important;
+                transition: none !important;
+            }
+            .modal-header h3 {
+                color: #e74645 !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            .modal-details {
+                color: #adb5bd !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            .modal-details h4 {
+                color: #f8f9fa !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            .modal-close {
+                color: #adb5bd !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             .modal-body {
                 gap: 15px;
@@ -557,6 +589,7 @@
             const prevBtn = document.getElementById('modal-prev-btn');
 
             let currentIndex = 0;
+            let savedScrollPosition = 0;
 
             function createThumbnail(item) {
                 modalVideoContainer.innerHTML = `
@@ -624,6 +657,9 @@
             }
 
             const openModal = (index) => {
+                // Save scroll position BEFORE opening modal
+                savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                
                 currentIndex = index;
                 const item = portfolioData[currentIndex];
                 modalTitle.textContent = `${item.title} (${item.year})`;
@@ -634,11 +670,12 @@
                 // Set modal height for mobile browsers
                 setModalHeight();
                 
-                // Force visibility styles immediately
+                // Force visibility styles immediately - use very high z-index for mobile
                 modal.style.display = 'flex';
                 modal.style.opacity = '1';
                 modal.style.visibility = 'visible';
-                modal.style.zIndex = '2000';
+                modal.style.zIndex = '9999';
+                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
                 
                 // Force content visibility
                 const modalContent = modal.querySelector('.modal-content');
@@ -646,15 +683,27 @@
                     modalContent.style.opacity = '1';
                     modalContent.style.visibility = 'visible';
                     modalContent.style.display = 'flex';
+                    modalContent.style.backgroundColor = '#343a40';
+                    modalContent.style.color = '#f8f9fa';
+                    modalContent.style.transform = 'scale(1)';
                 }
+                
+                // Force all child elements visible
+                const allModalElements = modal.querySelectorAll('*');
+                allModalElements.forEach(el => {
+                    el.style.visibility = 'visible';
+                    el.style.opacity = '1';
+                });
                 
                 // Prevent body scroll
                 document.body.classList.add('modal-open');
                 
-                // Prevent iOS bounce scrolling
+                // Prevent iOS bounce scrolling - save scroll position first
                 document.body.style.position = 'fixed';
-                document.body.style.top = `-${window.scrollY}px`;
+                document.body.style.top = `-${savedScrollPosition}px`;
                 document.body.style.width = '100%';
+                document.body.style.left = '0';
+                document.body.style.right = '0';
                 
                 modal.classList.add('is-open');
                 
@@ -676,13 +725,24 @@
                 
                 document.body.classList.remove('modal-open');
                 
-                // Restore body scroll position
-                const scrollY = document.body.style.top;
+                // Restore body scroll position - use saved position
                 document.body.style.position = '';
                 document.body.style.top = '';
                 document.body.style.width = '';
-                if (scrollY) {
-                    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+                document.body.style.left = '';
+                document.body.style.right = '';
+                
+                // Restore scroll to the saved position
+                window.scrollTo(0, savedScrollPosition);
+                
+                // Fallback: also try restoring via window scroll
+                if (window.pageYOffset === 0 && savedScrollPosition > 0) {
+                    // If scroll didn't work, try setting it directly
+                    setTimeout(() => {
+                        window.scrollTo(0, savedScrollPosition);
+                        document.documentElement.scrollTop = savedScrollPosition;
+                        document.body.scrollTop = savedScrollPosition;
+                    }, 0);
                 }
                 
                 modal.classList.remove('is-open');
