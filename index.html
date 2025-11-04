@@ -197,8 +197,13 @@
             /* Use JavaScript-calculated height for mobile browsers */
             height: 100vh;
             height: -webkit-fill-available;
+            min-height: 100vh;
             /* Ensure modal is on top of everything */
             pointer-events: auto;
+            /* Chrome mobile rendering fix */
+            will-change: opacity, visibility;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
         }
         .modal.is-open { 
             display: flex !important; 
@@ -317,11 +322,21 @@
                 right: 0 !important;
                 bottom: 0 !important;
                 width: 100vw !important;
+                width: 100% !important;
                 height: 100vh !important;
                 height: -webkit-fill-available !important;
+                min-height: 100vh !important;
+                min-height: -webkit-fill-available !important;
                 background: rgba(0, 0, 0, 0.95) !important;
+                background-color: rgba(0, 0, 0, 0.95) !important;
                 z-index: 9999 !important;
                 transition: none !important;
+                /* Chrome mobile rendering fixes */
+                will-change: opacity, visibility !important;
+                transform: translateZ(0) !important;
+                -webkit-transform: translateZ(0) !important;
+                backface-visibility: hidden !important;
+                -webkit-backface-visibility: hidden !important;
                 /* Remove display: none from base .modal rule to allow .is-open to work */
             }
             .modal.is-open {
@@ -329,6 +344,8 @@
                 opacity: 1 !important;
                 visibility: visible !important;
                 pointer-events: auto !important;
+                transform: translateZ(0) !important;
+                -webkit-transform: translateZ(0) !important;
             }
             .modal-content {
                 max-width: 100vw !important;
@@ -339,7 +356,8 @@
                 padding: 15px !important;
                 opacity: 1 !important;
                 visibility: visible !important;
-                transform: scale(1) !important;
+                transform: scale(1) translateZ(0) !important;
+                -webkit-transform: scale(1) translateZ(0) !important;
                 background: #343a40 !important;
                 background-color: #343a40 !important;
                 display: flex !important;
@@ -349,6 +367,10 @@
                 transition: none !important;
                 position: relative !important;
                 z-index: 100000 !important;
+                /* Chrome mobile rendering fixes */
+                will-change: transform, opacity !important;
+                backface-visibility: hidden !important;
+                -webkit-backface-visibility: hidden !important;
             }
             .modal-header h3 {
                 color: #e74645 !important;
@@ -692,10 +714,17 @@
                 window.open(videoUrl, '_blank');
             }
 
-            // Fix viewport height for mobile browsers
+            // Fix viewport height for mobile browsers (especially Chrome)
             function setModalHeight() {
+                // Use visualViewport if available (better for Chrome mobile)
+                const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                if (height) {
+                    modal.style.height = height + 'px';
+                    modal.style.minHeight = height + 'px';
+                }
+                // Also set on documentElement for Chrome
                 if (window.innerHeight) {
-                    modal.style.height = window.innerHeight + 'px';
+                    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
                 }
             }
 
@@ -703,6 +732,11 @@
             function isMobileDevice() {
                 return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
                     || (window.innerWidth <= 768 && window.innerHeight <= 1024);
+            }
+            
+            // Detect Chrome specifically
+            function isChrome() {
+                return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             }
 
             const openModal = (index) => {
@@ -717,12 +751,16 @@
                 createThumbnail(item);
 
                 const isMobile = isMobileDevice();
+                const isChromeMobile = isMobile && isChrome();
                 
-                // Set modal height for mobile browsers
+                // Set modal height for mobile browsers (especially Chrome)
                 setModalHeight();
                 
                 // For mobile, use more aggressive styling
                 if (isMobile) {
+                    // Get actual viewport height for Chrome mobile
+                    const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                    
                     // Mobile-specific: Direct inline styles that override everything
                     modal.style.cssText = `
                         position: fixed !important;
@@ -731,9 +769,13 @@
                         right: 0 !important;
                         bottom: 0 !important;
                         width: 100vw !important;
-                        height: 100vh !important;
+                        width: 100% !important;
+                        height: ${viewportHeight}px !important;
+                        min-height: ${viewportHeight}px !important;
                         height: -webkit-fill-available !important;
+                        min-height: -webkit-fill-available !important;
                         background: rgba(0, 0, 0, 0.95) !important;
+                        background-color: rgba(0, 0, 0, 0.95) !important;
                         z-index: 99999 !important;
                         display: flex !important;
                         opacity: 1 !important;
@@ -741,26 +783,36 @@
                         pointer-events: auto !important;
                         overflow-y: auto !important;
                         -webkit-overflow-scrolling: touch !important;
+                        transform: translateZ(0) !important;
+                        -webkit-transform: translateZ(0) !important;
+                        will-change: opacity, visibility !important;
+                        backface-visibility: hidden !important;
+                        -webkit-backface-visibility: hidden !important;
                     `;
                     
                     const modalContent = modal.querySelector('.modal-content');
                     if (modalContent) {
                         modalContent.style.cssText = `
                             max-width: 100vw !important;
-                            max-height: 100vh !important;
+                            max-height: ${viewportHeight}px !important;
                             width: 100% !important;
                             margin: 0 !important;
                             padding: 15px !important;
                             border-radius: 0 !important;
                             background: #343a40 !important;
+                            background-color: #343a40 !important;
                             color: #f8f9fa !important;
                             display: flex !important;
                             flex-direction: column !important;
                             opacity: 1 !important;
                             visibility: visible !important;
-                            transform: scale(1) !important;
+                            transform: scale(1) translateZ(0) !important;
+                            -webkit-transform: scale(1) translateZ(0) !important;
                             position: relative !important;
                             z-index: 100000 !important;
+                            will-change: transform, opacity !important;
+                            backface-visibility: hidden !important;
+                            -webkit-backface-visibility: hidden !important;
                         `;
                     }
                     
@@ -814,9 +866,30 @@
                 // Force a reflow to ensure browser applies styles
                 void modal.offsetHeight;
                 
-                // Recalculate on orientation change
+                // Chrome mobile specific: Force rendering with requestAnimationFrame
+                if (isChromeMobile) {
+                    requestAnimationFrame(() => {
+                        modal.style.display = 'flex';
+                        modal.style.opacity = '1';
+                        modal.style.visibility = 'visible';
+                        // Force another reflow
+                        void modal.offsetHeight;
+                        // Ensure content is visible
+                        const modalContent = modal.querySelector('.modal-content');
+                        if (modalContent) {
+                            modalContent.style.opacity = '1';
+                            modalContent.style.visibility = 'visible';
+                            void modalContent.offsetHeight;
+                        }
+                    });
+                }
+                
+                // Recalculate on orientation change and viewport resize (for Chrome mobile)
                 window.addEventListener('resize', setModalHeight);
                 window.addEventListener('orientationchange', setModalHeight);
+                if (window.visualViewport) {
+                    window.visualViewport.addEventListener('resize', setModalHeight);
+                }
             };
 
             const closeModal = () => {
@@ -870,6 +943,9 @@
                 // Remove event listeners
                 window.removeEventListener('resize', setModalHeight);
                 window.removeEventListener('orientationchange', setModalHeight);
+                if (window.visualViewport) {
+                    window.visualViewport.removeEventListener('resize', setModalHeight);
+                }
             };
             
             const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
