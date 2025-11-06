@@ -223,19 +223,31 @@
                 height: 100vh !important;
                 height: -webkit-fill-available !important;
                 background: rgba(0, 0, 0, 0.95) !important;
+                background-color: rgba(0, 0, 0, 0.95) !important;
                 z-index: 99999 !important;
                 /* Don't set display: none here - let .is-open control it */
+                /* Safari-specific fixes */
+                -webkit-transform: translateZ(0) !important;
+                transform: translateZ(0) !important;
+                -webkit-backface-visibility: hidden !important;
+                backface-visibility: hidden !important;
             }
             .modal.is-open {
                 display: flex !important;
                 opacity: 1 !important;
                 visibility: visible !important;
                 pointer-events: auto !important;
+                /* Safari-specific fixes */
+                -webkit-transform: translateZ(0) !important;
+                transform: translateZ(0) !important;
             }
             .modal-content {
                 transition: none !important;
                 opacity: 1 !important;
                 visibility: visible !important;
+                /* Safari-specific fixes */
+                -webkit-transform: scale(1) translateZ(0) !important;
+                transform: scale(1) translateZ(0) !important;
             }
         }
         .modal-content {
@@ -741,6 +753,22 @@
                 return /Chrome/.test(ua) && !/Edge|OPR|Opera/.test(ua) && 
                        (/Google Inc/.test(navigator.vendor) || navigator.vendor === '');
             }
+            
+            // Detect Safari specifically (including mobile Safari)
+            function isSafari() {
+                const ua = navigator.userAgent;
+                // Check for Safari (but not Chrome, Edge, or Opera)
+                // iOS Safari: iPhone/iPad with Safari in UA but not Chrome
+                const isIOS = /iPhone|iPad|iPod/.test(ua);
+                // Desktop Safari: Mac with Safari but not Chrome/Edge/Opera
+                const isMacOS = /Macintosh/.test(ua) && !/Chrome|Edge|OPR|Opera/.test(ua);
+                // General Safari UA check (but exclude Chrome-based browsers)
+                const isSafariUA = /Safari/.test(ua) && !/Chrome|Edge|OPR|Opera|CriOS|FxiOS/.test(ua);
+                // Vendor check (Safari has Apple vendor)
+                const isSafariVendor = /Apple/.test(navigator.vendor);
+                // Return true if it's iOS (likely Safari), or if it matches Safari patterns
+                return (isIOS && !/CriOS|FxiOS/.test(ua)) || (isMacOS && isSafariVendor) || (isSafariUA && isSafariVendor);
+            }
 
             const openModal = (index) => {
                 // Save scroll position BEFORE opening modal
@@ -755,19 +783,20 @@
 
                 const isMobile = isMobileDevice();
                 const isChromeMobile = isMobile && isChrome();
+                const isSafariMobile = isMobile && isSafari();
                 
-                // Set modal height for mobile browsers (especially Chrome)
+                // Set modal height for mobile browsers (especially Chrome and Safari)
                 setModalHeight();
                 
                 // For mobile, use more aggressive styling
                 if (isMobile) {
-                    // Get actual viewport height for Chrome mobile
+                    // Get actual viewport height for Chrome/Safari mobile
                     const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
                     
-                    // Chrome mobile fix: Set properties in sequence to force proper rendering
-                    // Chrome mobile has a bug where setting display + opacity + visibility in one cssText
+                    // Chrome and Safari mobile fix: Set properties in sequence to force proper rendering
+                    // Chrome and Safari mobile have bugs where setting display + opacity + visibility in one cssText
                     // doesn't always trigger a reflow, causing the modal to be invisible
-                    if (isChromeMobile) {
+                    if (isChromeMobile || isSafariMobile) {
                         // Step 1: Set position and layout first (without display)
                         modal.style.position = 'fixed';
                         modal.style.top = '0';
@@ -948,12 +977,12 @@
                 
                 modal.classList.add('is-open');
                 
-                // Force a reflow to ensure browser applies styles (only for non-Chrome, Chrome handled above)
-                if (!isChromeMobile) {
+                // Force a reflow to ensure browser applies styles (only for non-Chrome/Safari, Chrome/Safari handled above)
+                if (!isChromeMobile && !isSafariMobile) {
                     void modal.offsetHeight;
                 }
                 
-                // Recalculate on orientation change and viewport resize (for Chrome mobile)
+                // Recalculate on orientation change and viewport resize (for Chrome/Safari mobile)
                 window.addEventListener('resize', setModalHeight);
                 window.addEventListener('orientationchange', setModalHeight);
                 if (window.visualViewport) {
