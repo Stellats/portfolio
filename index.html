@@ -262,11 +262,17 @@
 
 
         @media (max-width: 900px) {
+            .modal {
+                /* Remove transition delays on tablets/mobile */
+                transition: opacity 0.2s ease, visibility 0s 0s !important;
+            }
             .modal.is-open {
                 visibility: visible !important;
                 opacity: 1 !important;
                 pointer-events: auto !important;
                 display: flex !important;
+                /* Ensure immediate visibility */
+                transition: none !important;
             }
             .modal-body { 
                 flex-direction: column; 
@@ -284,12 +290,16 @@
                 background: rgba(0, 0, 0, 0.95);
                 padding: 10px;
                 z-index: 9999;
+                /* Remove transition delays on mobile */
+                transition: opacity 0.2s ease, visibility 0s 0s !important;
             }
             .modal.is-open {
                 visibility: visible !important;
                 opacity: 1 !important;
                 pointer-events: auto !important;
                 display: flex !important;
+                /* Ensure immediate visibility on mobile */
+                transition: none !important;
             }
             .modal-content {
                 margin: 10px;
@@ -612,6 +622,9 @@
                 
                 // Add the is-open class (CSS handles the display)
                 modal.classList.add('is-open');
+                
+                // Force browser to recalculate styles (important for mobile)
+                void modal.offsetHeight;
                 
                 // Prevent body scroll
                 document.body.classList.add('modal-open');
