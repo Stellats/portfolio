@@ -184,23 +184,16 @@
             width: 100%; 
             height: 100%;
             background: rgba(0, 0, 0, 0.85); 
-            display: flex;
             align-items: center; 
             justify-content: center;
             z-index: 2000; 
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             /* Hidden by default */
-            visibility: hidden;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            display: none;
         }
         .modal.is-open { 
-            visibility: visible;
-            opacity: 1;
-            pointer-events: auto;
-            transition: opacity 0.3s ease, visibility 0s 0s;
+            display: flex;
         }
         .modal-content {
             background: var(--bg-card); 
@@ -262,18 +255,6 @@
 
 
         @media (max-width: 900px) {
-            .modal {
-                /* Remove transition delays on tablets/mobile */
-                transition: opacity 0.2s ease, visibility 0s 0s !important;
-            }
-            .modal.is-open {
-                visibility: visible !important;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                display: flex !important;
-                /* Ensure immediate visibility */
-                transition: none !important;
-            }
             .modal-body { 
                 flex-direction: column; 
             } 
@@ -290,16 +271,6 @@
                 background: rgba(0, 0, 0, 0.95);
                 padding: 10px;
                 z-index: 9999;
-                /* Remove transition delays on mobile */
-                transition: opacity 0.2s ease, visibility 0s 0s !important;
-            }
-            .modal.is-open {
-                visibility: visible !important;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                display: flex !important;
-                /* Ensure immediate visibility on mobile */
-                transition: none !important;
             }
             .modal-content {
                 margin: 10px;
