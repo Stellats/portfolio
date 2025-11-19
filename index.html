@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frankie Stellato - Animation Supervisor</title>
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='5' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23f8f9fa'%3EF%3C/text%3E%3Ctext x='50' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23fdfa66'%3ES%3C/text%3E%3C/svg%3E">
-    
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='5' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23f8f9fa'%3EF%3C/text%3E%3Ctext x='50' y='85' font-size='90' font-weight='bold' font-family='sans-serif' fill='%23fdfa66'%3ES%3C/text%3E%3C/svg%3E">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg-main: #212529;
             --bg-card: #343a40;
             --text-primary: #f8f9fa;
             --text-secondary: #adb5bd;
-            --accent-primary: #e74645; /* Red */
-            --accent-hover: #fb7756;   /* Coral */
-            --btn-bg: #1ac0c6;         /* Teal */
-            --btn-hover-bg: #facd60;   /* Yellow-Gold */
-            --headline-color: #fdfa66; /* Bright Yellow */
+            --accent-primary: #e74645;
+            /* Red */
+            --accent-hover: #fb7756;
+            /* Coral */
+            --btn-bg: #1ac0c6;
+            /* Teal */
+            --btn-hover-bg: #facd60;
+            /* Yellow-Gold */
+            --headline-color: #fdfa66;
+            /* Bright Yellow */
             --border-color: #495057;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -36,22 +45,35 @@
             line-height: 1.6;
             position: relative;
         }
-        
-        body.modal-open { overflow: hidden; }
+
+        body.modal-open {
+            overflow: hidden;
+        }
 
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
             pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='10' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             opacity: 0.03;
         }
 
-        .container { max-width: 960px; margin: auto; padding: 0 20px; }
-        .container-wide { max-width: 1280px; margin: auto; padding: 0 20px; }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .container-wide {
+            max-width: 1280px;
+            margin: auto;
+            padding: 0 20px;
+        }
 
         .branding-header {
             background: var(--bg-card);
@@ -60,8 +82,18 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .branding-header h1 { margin: 0; font-size: 3rem; color: var(--headline-color); }
-        .branding-header p { margin: 5px 0 0 0; font-size: 1.25rem; color: var(--accent-primary); font-weight: 400; }
+        .branding-header h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: var(--headline-color);
+        }
+
+        .branding-header p {
+            margin: 5px 0 0 0;
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+            font-weight: 400;
+        }
 
         .sticky-nav {
             background: rgba(52, 58, 64, 0.8);
@@ -73,24 +105,76 @@
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
         }
-        
-        .sticky-nav .container { display: flex; justify-content: center; gap: 30px; }
-        .sticky-nav a { color: var(--text-primary); text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: color 0.3s; }
-        .sticky-nav a:hover { color: var(--accent-hover); }
 
-        .fade-in-section { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .sticky-nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
 
-        section { padding: 80px 0; }
-        section { border-bottom: 1px solid var(--border-color); }
-        section:last-of-type { border-bottom: none; }
-        section h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: #ffffff; font-weight: 700; }
+        .sticky-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .sticky-nav a:hover {
+            color: var(--accent-hover);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ensure content is visible on mobile/tablet if JS fails or observer is flaky */
+        @media (max-width: 992px) {
+            .fade-in-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        section {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
 
         .about-content {
             display: flex;
             align-items: center;
             gap: 40px;
         }
+
         .about-content img {
             border-radius: 50%;
             width: 150px;
@@ -99,56 +183,85 @@
             border: 3px solid var(--border-color);
             flex-shrink: 0;
         }
+
         .about-content p {
             margin: 0;
         }
 
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: auto; background: #000; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: auto;
+            background: #000;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
         .video-container iframe,
-        .video-container img { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
+        .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
         }
-        .reel-link-container { text-align: center; margin-top: 30px; }
-        
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        
-        .portfolio-item { 
-            background: var(--bg-card); 
-            border-radius: 8px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-            transition: transform 0.3s, box-shadow 0.3s; 
-            cursor: pointer; 
+
+        .reel-link-container {
+            text-align: center;
+            margin-top: 30px;
         }
-        .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.4); }
-        
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
         .portfolio-item .image-wrap {
             position: relative;
             width: 100%;
-            aspect-ratio: 2/3; /* Standard poster aspect ratio */
+            aspect-ratio: 2/3;
+            /* Standard poster aspect ratio */
             background-color: var(--bg-card);
             overflow: hidden;
         }
-/* Fallback for older mobile browsers that don't support aspect-ratio */
-@supports not (aspect-ratio: 1 / 1) {
-    .portfolio-item .image-wrap {
-        position: relative;
-        height: 0;
-        padding-top: 150%; /* 2:3 aspect ratio */
-        overflow: hidden;
-    }
-    .portfolio-item .image-wrap img {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
+
+        /* Fallback for older mobile browsers that don't support aspect-ratio */
+        @supports not (aspect-ratio: 1 / 1) {
+            .portfolio-item .image-wrap {
+                position: relative;
+                height: 0;
+                padding-top: 150%;
+                /* 2:3 aspect ratio */
+                overflow: hidden;
+            }
+
+            .portfolio-item .image-wrap img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
 
         .portfolio-item img {
             width: 100%;
@@ -157,97 +270,249 @@
             display: block;
             transition: transform 0.4s ease-out;
         }
-        .portfolio-item:hover img { transform: scale(1.05); }
-        .portfolio-info { padding: 20px; min-height: 120px; }
-        .portfolio-info h3 { font-size: 1.25rem; margin-top: 0; font-weight: 600; color: var(--accent-primary); }
-        .portfolio-info p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); }
 
-        .contact-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .contact-content p { font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; }
-        
-        .btn { display: inline-block; background-color: var(--btn-bg); color: var(--bg-main); padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: 700; transition: background-color 0.3s, color 0.3s, transform 0.3s; }
-        .btn:hover { background-color: var(--btn-hover-bg); color: var(--bg-main); transform: translateY(-3px); }
-        
-        .social-links { margin-top: 30px; }
-        .social-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s, transform 0.3s; display: inline-block; }
-        .social-links a:hover { color: var(--accent-hover); transform: scale(1.1); }
-        .social-links svg { width: 28px; height: 28px; fill: currentColor; }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
 
-        footer { text-align: center; padding: 20px; background: var(--bg-card); border-top: 1px solid var(--border-color); }
-        
+        .portfolio-info {
+            padding: 20px;
+            min-height: 120px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        .portfolio-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: var(--text-secondary);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-bg);
+            color: var(--bg-main);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--btn-hover-bg);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-hover);
+            transform: scale(1.1);
+        }
+
+        .social-links svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+
         .modal {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
+            position: fixed;
+            top: 0;
+            left: 0;
             right: 0;
             bottom: 0;
-            width: 100%; 
+            width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85); 
-            align-items: center; 
+            background: rgba(0, 0, 0, 0.85);
+            align-items: center;
             justify-content: center;
-            z-index: 2000; 
+            z-index: 2000;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             /* Hidden by default */
             display: none;
+            opacity: 0.05;
+            transition: opacity 0.3s ease;
         }
-        .modal.is-open { 
+
+        .modal.is-open {
             display: flex;
         }
+
+        .modal.is-visible {
+            opacity: 1;
+        }
+
         .modal-content {
-            background: var(--bg-card); 
-            padding: 20px; 
+            background: var(--bg-card);
+            padding: 20px;
             border-radius: 8px;
             max-width: min(1000px, 90vw);
-            max-height: 90vh; 
+            max-height: 90vh;
             width: 100%;
-            display: flex; 
-            flex-direction: column; 
+            display: flex;
+            flex-direction: column;
             position: relative;
             margin: 20px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .modal-header h3 { margin: 0; color: var(--accent-primary); }
-        .modal-close { font-size: 2rem; color: var(--text-secondary); cursor: pointer; background: none; border: none; line-height: 1; }
-        .modal-close:hover { color: var(--text-primary); }
-        .modal-body { display: flex; gap: 20px; overflow: hidden; }
-        .modal-video-wrap { flex: 2; min-width: 0; position: relative; background: #000; border-radius: 8px; cursor: pointer; touch-action: manipulation; }
-        .modal-details { flex: 1; min-width: 0; overflow-y: auto; color: var(--text-secondary); }
-        .modal-details h4 { margin-top: 0; color: var(--text-primary); }
-        .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% - 20px); left: 10px; display: flex; justify-content: space-between; pointer-events: none; }
-        .modal-nav-btn { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: 50%; color: white; width: 50px; height: 50px; font-size: 2rem; cursor: pointer; pointer-events: all; transition: background-color 0.2s; }
-        .modal-nav-btn:hover { background: rgba(0, 0, 0, 0.7); }
-        
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--accent-primary);
+        }
+
+        .modal-close {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .modal-video-wrap {
+            flex: 2;
+            min-width: 0;
+            position: relative;
+            background: #000;
+            border-radius: 8px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .modal-details {
+            flex: 1;
+            min-width: 0;
+            overflow-y: auto;
+            color: var(--text-secondary);
+        }
+
+        .modal-details h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: calc(100% - 20px);
+            left: 10px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .modal-nav-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: white;
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+            cursor: pointer;
+            pointer-events: all;
+            transition: background-color 0.2s;
+        }
+
+        .modal-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
         .modal-play-button {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: auto; height: auto;
+            width: auto;
+            height: auto;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
             border: 2px solid white;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             pointer-events: none;
             transition: transform 0.2s, background-color 0.2s;
             padding: 10px 20px;
         }
+
         .modal-play-button-icon {
-            width: 0; height: 0;
+            width: 0;
+            height: 0;
             border-style: solid;
             border-width: 15px 0 15px 25px;
             border-color: transparent transparent transparent white;
             margin: 0 0 5px 5px;
         }
+
         .modal-play-button-text {
             color: white;
             font-size: 1rem;
             font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
+
         .modal-video-wrap:hover .modal-play-button {
             transform: translate(-50%, -50%) scale(1.1);
             background-color: rgba(231, 70, 69, 0.8);
@@ -255,9 +520,10 @@
 
 
         @media (max-width: 900px) {
-            .modal-body { 
-                flex-direction: column; 
-            } 
+            .modal-body {
+                flex-direction: column;
+            }
+
             .modal-content {
                 max-width: 95vw;
                 max-height: 95vh;
@@ -265,49 +531,74 @@
                 padding: 15px;
             }
         }
-        
+
         @media (max-width: 768px) {
             .modal {
                 background: rgba(0, 0, 0, 0.95);
                 padding: 10px;
                 z-index: 9999;
             }
+
             .modal-content {
                 margin: 10px;
                 padding: 15px;
                 max-height: 90vh;
             }
+
             .modal-body {
                 gap: 15px;
                 flex-direction: column;
             }
+
             .modal-video-wrap {
                 min-height: 200px;
                 aspect-ratio: 16/9;
             }
+
             .modal-details {
                 max-height: 40vh;
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
+
             .modal-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 1.5rem;
             }
-            .branding-header { padding: 30px 20px; }
-            .branding-header h1 { font-size: 2.5rem; }
-            .branding-header p { font-size: 1.1rem; }
-            .sticky-nav .container { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .sticky-nav a { font-size: 1rem; }
+
+            .branding-header {
+                padding: 30px 20px;
+            }
+
+            .branding-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .branding-header p {
+                font-size: 1.1rem;
+            }
+
+            .sticky-nav .container {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sticky-nav a {
+                font-size: 1rem;
+            }
+
             .about-content {
                 flex-direction: column;
                 text-align: center;
             }
+
             .portfolio-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 15px;
             }
+
             .container-wide {
                 padding: 0 15px;
             }
@@ -318,19 +609,21 @@
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 gap: 12px;
             }
+
             .portfolio-item .image-wrap {
                 aspect-ratio: 2/3;
             }
         }
     </style>
 </head>
+
 <body>
 
     <header class="branding-header">
         <h1>Frankie Stellato</h1>
         <p>Animation Supervisor | Head of Department</p>
     </header>
-    
+
     <nav class="sticky-nav">
         <div class="container">
             <a href="#about">About</a>
@@ -345,9 +638,14 @@
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
-                    <img referrerpolicy="no-referrer" src="Portraits/DSC08222-Edit-2.jpg" alt="Frankie Stellato - Headshot">
+                    <img referrerpolicy="no-referrer" src="Portraits/DSC08222-Edit-2.jpg"
+                        alt="Frankie Stellato - Headshot">
                     <p>
-                        With over 15 years of experience in the VFX industry, I have had the privilege of leading talented teams on blockbuster films. My passion lies in crafting compelling character and creature performances, overseeing the animation pipeline from concept to final shot. I thrive on mentoring artists and pushing the boundaries of visual storytelling to create unforgettable cinematic moments.
+                        With over 15 years of experience in the VFX industry, I have had the privilege of leading
+                        talented teams on blockbuster films. My passion lies in crafting compelling character and
+                        creature performances, overseeing the animation pipeline from concept to final shot. I thrive on
+                        mentoring artists and pushing the boundaries of visual storytelling to create unforgettable
+                        cinematic moments.
                     </p>
                 </div>
             </div>
@@ -357,11 +655,8 @@
             <div class="container">
                 <h2>Supervisor Demo Reel</h2>
                 <div class="video-container">
-                    <iframe 
-                        src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen>
+                    <iframe src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
                     </iframe>
                 </div>
                 <div class="reel-link-container">
@@ -388,16 +683,21 @@
                     <p>I'm always open to discussing new projects and opportunities. Feel free to reach out.</p>
                     <a href="mailto:frankie.stellato@example.com" class="btn">Email Me</a>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/frankiestellato/" target="_blank" aria-label="LinkedIn Profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="linkedinTitle">
+                        <a href="https://www.linkedin.com/in/frankiestellato/" target="_blank"
+                            aria-label="LinkedIn Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-labelledby="linkedinTitle">
                                 <title id="linkedinTitle">LinkedIn Logo</title>
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                         </a>
                         <a href="https://www.imdb.com/name/nm3070627/" target="_blank" aria-label="IMDb Profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="imdbTitle">
-                               <title id="imdbTitle">IMDb Logo</title>
-                               <path d="M19.521 0h-15.042c-2.474 0-4.479 2.005-4.479 4.479v15.042c0 2.474 2.005 4.479 4.479 4.479h15.042c2.474 0 4.479-2.005 4.479-4.479v-15.042c0-2.474-2.005-4.479-4.479-4.479zm-14.521 6h2v12h-2v-12zm3 0h2v12h-2v-12zm3 0h2v12h-2v-12zm3.013 0h1.987v2.262h.063c.425-.8 1.438-1.262 2.937-1.262 2.013 0 3 1.563 3 4.5v6.5h-2v-6c0-1.738-.638-2.5-2-2.5s-2 .762-2 2.5v6h-2v-12z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-labelledby="imdbTitle">
+                                <title id="imdbTitle">IMDb Logo</title>
+                                <path
+                                    d="M19.521 0h-15.042c-2.474 0-4.479 2.005-4.479 4.479v15.042c0 2.474 2.005 4.479 4.479 4.479h15.042c2.474 0 4.479-2.005 4.479-4.479v-15.042c0-2.474-2.005-4.479-4.479-4.479zm-14.521 6h2v12h-2v-12zm3 0h2v12h-2v-12zm3 0h2v12h-2v-12zm3.013 0h1.987v2.262h.063c.425-.8 1.438-1.262 2.937-1.262 2.013 0 3 1.563 3 4.5v6.5h-2v-6c0-1.738-.638-2.5-2-2.5s-2 .762-2 2.5v6h-2v-12z" />
                             </svg>
                         </a>
                     </div>
@@ -409,7 +709,7 @@
     <footer>
         <p>© 2024 Frankie Stellato. All Rights Reserved.</p>
     </footer>
-    
+
     <div class="modal" id="portfolio-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -427,26 +727,27 @@
             </div>
         </div>
         <div class="modal-nav">
-            <button class="modal-nav-btn" id="modal-prev-btn"><</button>
-            <button class="modal-nav-btn" id="modal-next-btn">></button>
+            <button class="modal-nav-btn" id="modal-prev-btn">
+                << /button>
+                    <button class="modal-nav-btn" id="modal-next-btn">></button>
         </div>
     </div>
 
 
     <script>
 
-// Compatibility: ensure fade-in sections are visible on browsers without IntersectionObserver
-(function() {
-  if (!('IntersectionObserver' in window)) {
-    var sections = document.querySelectorAll('.fade-in-section');
-    for (var i = 0; i < sections.length; i++) {
-      sections[i].classList.add('is-visible');
-    }
-  }
-})();
+        // Compatibility: ensure fade-in sections are visible on browsers without IntersectionObserver
+        (function () {
+            if (!('IntersectionObserver' in window)) {
+                var sections = document.querySelectorAll('.fade-in-section');
+                for (var i = 0; i < sections.length; i++) {
+                    sections[i].classList.add('is-visible');
+                }
+            }
+        })();
 
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
             // --- Project Details ---
             const portfolioData = [
@@ -490,14 +791,14 @@
                 { title: "The Love Guru", year: 2008, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/sp8AV64ftAZCT9uWfgbCb3olGDW.jpg", videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM", shortDesc: "temp short", longDesc: "temp long" },
                 { title: "The Incredible Hulk", year: 2008, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg", videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA", shortDesc: "temp short", longDesc: "temp long" },
             ];
-            
+
             const portfolioGrid = document.querySelector('.portfolio-grid');
             if (portfolioGrid) {
                 portfolioData.forEach((item, index) => {
                     const portfolioItem = document.createElement('div');
                     portfolioItem.className = 'portfolio-item';
                     portfolioItem.setAttribute('data-index', index);
-                    
+
                     portfolioItem.innerHTML = `
                         <div class="image-wrap">
                             <img referrerpolicy="no-referrer" src="${item.poster}" alt="Poster for ${item.title}" loading="lazy">
@@ -532,14 +833,14 @@
                     </div>
                 `;
             }
-            
+
             function createIframe(item) {
                 let videoUrl = item.videoUrl;
-                
+
                 // Handle YouTube URLs
                 if (videoUrl && videoUrl.includes('youtube.com') && !videoUrl.includes('placeholder')) {
                     let videoId;
-                    
+
                     // Extract ID from various YouTube URL formats
                     if (videoUrl.includes('/embed/')) {
                         videoId = videoUrl.split('/embed/')[1].split('?')[0];
@@ -549,18 +850,18 @@
                         try {
                             const urlParams = new URL(videoUrl).searchParams;
                             videoId = urlParams.get('v');
-                        } catch(e) {
+                        } catch (e) {
                             console.error("Invalid YouTube URL:", videoUrl, e);
                             // Fallback to opening in new tab
                             window.open(videoUrl, '_blank');
                             return;
                         }
                     }
-                    
+
                     if (videoId) {
                         // Mobile-friendly embed with playsinline and modestbranding
                         videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&modestbranding=1&rel=0`;
-                        
+
                         // Replace the clicked container with the iframe
                         const container = modalVideoContainer.querySelector('.video-container');
                         if (container) {
@@ -574,7 +875,7 @@
                         return;
                     }
                 }
-                
+
                 // Fallback for non-YouTube or invalid URLs - open in new tab
                 window.open(videoUrl, '_blank');
             }
@@ -583,20 +884,23 @@
             const openModal = (index) => {
                 // Save scroll position BEFORE opening modal
                 savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-                
+
                 currentIndex = index;
                 const item = portfolioData[currentIndex];
                 modalTitle.textContent = `${item.title} (${item.year})`;
                 modalDescription.textContent = item.longDesc;
-                
+
                 createThumbnail(item);
-                
+
                 // Add the is-open class (CSS handles the display)
                 modal.classList.add('is-open');
-                
+
                 // Force browser to recalculate styles (important for mobile)
                 void modal.offsetHeight;
-                
+
+                // Trigger fade in
+                modal.classList.add('is-visible');
+
                 // Prevent body scroll
                 document.body.classList.add('modal-open');
                 document.body.style.position = 'fixed';
@@ -605,21 +909,27 @@
             };
 
             const closeModal = () => {
-                modalVideoContainer.innerHTML = "";
-                
-                // Remove the is-open class (CSS handles the display)
-                modal.classList.remove('is-open');
-                
-                // Restore body scroll
-                document.body.classList.remove('modal-open');
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
-                
-                // Restore scroll to the saved position
-                window.scrollTo(0, savedScrollPosition);
+                // Trigger fade out
+                modal.classList.remove('is-visible');
+
+                // Wait for transition to complete
+                setTimeout(() => {
+                    modalVideoContainer.innerHTML = "";
+
+                    // Remove the is-open class (CSS handles the display)
+                    modal.classList.remove('is-open');
+
+                    // Restore body scroll
+                    document.body.classList.remove('modal-open');
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+
+                    // Restore scroll to the saved position
+                    window.scrollTo(0, savedScrollPosition);
+                }, 300);
             };
-            
+
             const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
             const showPrevItem = () => openModal((currentIndex - 1 + portfolioData.length) % portfolioData.length);
 
@@ -629,15 +939,15 @@
                     openModal(parseInt(item.getAttribute('data-index'), 10));
                 }
             });
-            
+
             // Handle both click and touch events for better mobile support
             function handleVideoPlay(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 const videoContainer = e.target.closest('.video-container');
                 const playButton = e.target.closest('.modal-play-button');
-                
+
                 if (videoContainer || playButton) {
                     const item = portfolioData[currentIndex];
                     // Check if we already have an iframe (to prevent double-loading)
@@ -646,10 +956,10 @@
                     }
                 }
             }
-            
+
             modalVideoContainer.addEventListener('click', handleVideoPlay);
             // Add touch support for mobile
-            modalVideoContainer.addEventListener('touchend', function(e) {
+            modalVideoContainer.addEventListener('touchend', function (e) {
                 // Only trigger if it's a tap (not a swipe)
                 if (e.target === e.currentTarget || e.target.closest('.video-container') || e.target.closest('.modal-play-button')) {
                     handleVideoPlay(e);
@@ -661,11 +971,11 @@
                 closeModal();
             }
             closeBtn.addEventListener('click', handleClose);
-            closeBtn.addEventListener('touchend', function(e) {
+            closeBtn.addEventListener('touchend', function (e) {
                 e.preventDefault();
                 handleClose();
             }, { passive: false });
-            
+
             // Handle navigation buttons with touch support
             function handleNext(e) {
                 e.preventDefault();
@@ -677,12 +987,12 @@
                 e.stopPropagation();
                 showPrevItem();
             }
-            
+
             nextBtn.addEventListener('click', handleNext);
             nextBtn.addEventListener('touchend', handleNext, { passive: false });
             prevBtn.addEventListener('click', handlePrev);
             prevBtn.addEventListener('touchend', handlePrev, { passive: false });
-            
+
             // Close modal when clicking outside (with touch support)
             function handleModalBackdrop(e) {
                 if (e.target === modal) {
@@ -690,7 +1000,7 @@
                 }
             }
             modal.addEventListener('click', handleModalBackdrop);
-            modal.addEventListener('touchend', function(e) {
+            modal.addEventListener('touchend', function (e) {
                 if (e.target === modal) {
                     e.preventDefault();
                     closeModal();
@@ -722,11 +1032,15 @@
     </script>
 
 
-<noscript>
-<style>
-  .fade-in-section { opacity: 1 !important; transform: none !important; }
-</style>
-</noscript>
+    <noscript>
+        <style>
+            .fade-in-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
 
 </body>
+
 </html>
