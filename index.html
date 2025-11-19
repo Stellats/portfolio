@@ -85,13 +85,20 @@
         .branding-header h1 {
             margin: 0;
             font-size: 3rem;
+        }
+
+        .branding-header h1 .first-name {
+            color: var(--text-primary);
+        }
+
+        .branding-header h1 .last-name {
             color: var(--headline-color);
         }
 
         .branding-header p {
             margin: 5px 0 0 0;
             font-size: 1.25rem;
-            color: var(--accent-primary);
+            color: var(--text-primary);
             font-weight: 400;
         }
 
@@ -611,7 +618,7 @@
 <body>
 
     <header class="branding-header">
-        <h1>Frankie Stellato</h1>
+        <h1><span class="first-name">Frankie</span> <span class="last-name">Stellato</span></h1>
         <p>Animation Supervisor | Head of Department</p>
     </header>
 
@@ -987,4 +994,3 @@
 </body>
 
 </html>
-
