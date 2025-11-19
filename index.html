@@ -939,6 +939,11 @@
                 showPrevItem();
             });
 
+            // Video thumbnail click handler
+            if (modalVideoContainer) {
+                modalVideoContainer.addEventListener('click', handleVideoPlay);
+            }
+
             // Close on backdrop click
             if (modal) {
                 modal.addEventListener('click', (e) => {
