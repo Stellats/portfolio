@@ -752,65 +752,39 @@
             // --- Project Details ---
             const portfolioData = [
                 { title: "Fantastic Four: First Steps", year: 2025, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/x26MtUlwtWD26d0G0FXcppxCJio.jpg", videoUrl: "https://www.youtube.com/embed/placeholder", shortDesc: "Senior Animation Supervisor", longDesc: "Supervised a team of 39 Animators in several sequences of The Thing, Mr.Fantastic, Franklin and Herbie. The primary focus on this show was body mechanics and facial animation." },
-                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg", videoUrl: "https://www.youtube.com/embed/1pHDWnXmK7Y", shortDesc: "temp short", longDesc: "Temp Long Cap" },
-                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/sI2NiMU8o65hmIMY0JI9CjJ0p7f.jpg", videoUrl: "https://www.youtube.com/embed/KpN98z8Kf5E", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Ant-Man and the Wasp: Quantumania", year: 2023, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg", videoUrl: "https://www.youtube.com/embed/ZlNFpri-Y40", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Marvel's Secret Invasion", year: 2023, poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", videoUrl: "https://www.youtube.com/embed/Tp_YZNqNBhw", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "WandaVision", year: 2021, poster: "https://artworks.thetvdb.com/banners/series/362392/posters/5f6a1111c2752.jpg", videoUrl: "https://www.youtube.com/embed/sj9J2ecsSpo", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFvhB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Chaos Walking", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xAYGdGBGptNkisXRpmhZSry6SPF.jpg", videoUrl: "https://www.youtube.com/embed/nRf4ZgzHoVw", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Shazam!", year: 2019, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xnopI5Xtky18MPhK40cZAGAOVeV.jpg", videoUrl: "https://www.youtube.com/embed/go6GEIrcvFY", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Lost In Space", year: 2018, poster: "https://artworks.thetvdb.com/banners/v4/series/343253/posters/61883b3134fd8.jpg", videoUrl: "https://www.youtube.com/embed/fzmM0AB60QQ", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Aquaman", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ufl63EFcc5XpByEV2Ecdw6WJZAI.jpg", videoUrl: "https://www.youtube.com/embed/WDkg3h8PCVU", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Ant-Man and the Wasp", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/cFQEO687n1K6umXbInzocxcnAQz.jpg", videoUrl: "https://www.youtube.com/embed/8_rTIAOohas", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Avengers: Infinity War", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", videoUrl: "https://www.youtube.com/embed/6ZfuNTqbHE8", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Spider-Man: Homecoming", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg", videoUrl: "https://www.youtube.com/embed/n9DwoQ7HWvI", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Beauty and the Beast", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/hKegSKIDep2ewJWPUQD7u0KqFIp.jpg", videoUrl: "https://www.youtube.com/embed/e3Nl_TCQXuw", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Independence Day: Resurgence", year: 2016, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9S50foUIYGwiNPWOxi1WJF6IPwI.jpg", videoUrl: "https://www.youtube.com/embed/RfJgT89hEME", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Deadpool", year: 2016, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3E53WEZJqP6aM84D8CckXx4pIHw.jpg", videoUrl: "https://www.youtube.com/embed/ONHBaC-pfsk", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Pixels", year: 2015, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/d26S5EfVXLNxRXqyFy1yyl3qRq3.jpg", videoUrl: "https://www.youtube.com/embed/XAHpr_dbOLw", shortDesc: "temp short", longDesc: "temp long" },
+                { title: "Captain America: Brave New World", year: 2025, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg", videoUrl: "https://www.youtube.com/embed/1pHDWnXmK7Y", shortDesc: "Senior Animation Supervisor", longDesc: "Temp Long Cap" },
+                { title: "The Electric State", year: 2024, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/sI2NiMU8o65hmIMY0JI9CjJ0p7f.jpg", videoUrl: "https://www.youtube.com/embed/KpN98z8Kf5E", shortDesc: "Temporary Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "Ant-Man and the Wasp: Quantumania", year: 2023, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg", videoUrl: "https://www.youtube.com/embed/ZlNFpri-Y40", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "Marvel's Secret Invasion", year: 2023, poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", videoUrl: "https://www.youtube.com/embed/Tp_YZNqNBhw", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "WandaVision", year: 2021, poster: "https://artworks.thetvdb.com/banners/series/362392/posters/5f6a1111c2752.jpg", videoUrl: "https://www.youtube.com/embed/sj9J2ecsSpo", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFvhB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "Chaos Walking", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xAYGdGBGptNkisXRpmhZSry6SPF.jpg", videoUrl: "https://www.youtube.com/embed/nRf4ZgzHoVw", shortDesc: "Animation Supervisor", longDesc: "temp long" },
+                { title: "Shazam!", year: 2019, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xnopI5Xtky18MPhK40cZAGAOVeV.jpg", videoUrl: "https://www.youtube.com/embed/go6GEIrcvFY", shortDesc: "Animation Supervisor", longDesc: "temp long" },
+                { title: "Lost In Space", year: 2018, poster: "https://artworks.thetvdb.com/banners/v4/series/343253/posters/61883b3134fd8.jpg", videoUrl: "https://www.youtube.com/embed/fzmM0AB60QQ", shortDesc: "Animation Supervisor", longDesc: "temp long" },
+                { title: "Aquaman", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ufl63EFcc5XpByEV2Ecdw6WJZAI.jpg", videoUrl: "https://www.youtube.com/embed/WDkg3h8PCVU", shortDesc: "Animation Supervisor", longDesc: "temp long" },
+                { title: "Ant-Man and the Wasp", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/cFQEO687n1K6umXbInzocxcnAQz.jpg", videoUrl: "https://www.youtube.com/embed/8_rTIAOohas", shortDesc: "Animation Supervisor", longDesc: "temp long" },
+                { title: "Avengers: Infinity War", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", videoUrl: "https://www.youtube.com/embed/6ZfuNTqbHE8", shortDesc: "Lead Animator", longDesc: "temp long" },
+                { title: "Spider-Man: Homecoming", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg", videoUrl: "https://www.youtube.com/embed/n9DwoQ7HWvI", shortDesc: "Lead Animator", longDesc: "temp long" },
+                { title: "Beauty and the Beast", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/hKegSKIDep2ewJWPUQD7u0KqFIp.jpg", videoUrl: "https://www.youtube.com/embed/e3Nl_TCQXuw", shortDesc: "Lead Animator", longDesc: "temp long" },
+                { title: "Independence Day: Resurgence", year: 2016, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9S50foUIYGwiNPWOxi1WJF6IPwI.jpg", videoUrl: "https://www.youtube.com/embed/RfJgT89hEME", shortDesc: "Temp Animation Supervisor", longDesc: "temp long" },
+                { title: "Deadpool", year: 2016, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3E53WEZJqP6aM84D8CckXx4pIHw.jpg", videoUrl: "https://www.youtube.com/embed/ONHBaC-pfsk", shortDesc: "Lead Animator", longDesc: "temp long" },
+                { title: "Pixels", year: 2015, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/d26S5EfVXLNxRXqyFy1yyl3qRq3.jpg", videoUrl: "https://www.youtube.com/embed/XAHpr_dbOLw", shortDesc: "Lead Animator", longDesc: "temp long" },
                 { title: "Night at the Museum: Secret of the Tomb", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xwgy305K6qDs3D20xUO4OZu1HPY.jpg", videoUrl: "https://www.youtube.com/embed/Hrkt_wSg1-I", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Maleficent", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bDG3yei6AJlEAK3A5wN7RwFXQ7V.jpg", videoUrl: "https://www.youtube.com/embed/n0OFH4xpPr4", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Ender's Game", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vmd3CNeG2B9FXsit61oc7oxabej.jpg", videoUrl: "https://www.youtube.com/embed/2UNWLgY-wuo", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Jack the Giant Slayer", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9jSI7saUX9Qz0JLh19jX2ulEwL7.jpg", videoUrl: "https://www.youtube.com/embed/plvPu2M5e-w", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "The Watch", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwfwC19.jpg", videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Resident Evil: Retribution", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ohdUDWVlcbuWphaLu6wS91xdJ73.jpg", videoUrl: "https://www.youtube.com/embed/T_4hSHg1i6o", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Silent Hill: Revelation", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xBC7bHZ5UglTw4LMd2lTSgXvQXl.jpg", videoUrl: "https://www.youtube.com/embed/Kmw-Vf_kO1M", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "The Three Musketeers", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/woCADkkDIIKrOMEokbFOEsAYtUa.jpg", videoUrl: "https://www.youtube.com/embed/mQd3Mw_Hl4U", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Hanna", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gRvxRMtejJa9jjfDDUibUIfIJbP.jpg", videoUrl: "https://www.youtube.com/embed/16402QZso1w", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "A Dangerous Method", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7TPYtzq9ABkfED1JB0tRASamL4z.jpg", videoUrl: "https://www.youtube.com/embed/664_1a0z-aE", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Resident Evil: Afterlife", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xaEHOuIkoTzHQIiex0Ys306Ky05.jpg", videoUrl: "https://www.youtube.com/embed/gq3z4y532-E", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Knight and Day", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/phhp52CZZJiGYmiOTp9ZBDkGHB3.jpg", videoUrl: "https://www.youtube.com/embed/gbs42eZYC6s", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Cats and Dogs: The Revenge of Kitty Galore", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/nTsZT66I4U3aS9ezLdOKacfvo8T.jpg", videoUrl: "https://www.youtube.com/embed/81nC4SAnlA4", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "The Book of Eli", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1H1y9ZiqNFaLgQiRDDZLA55PviW.jpg", videoUrl: "https://www.youtube.com/embed/zSMHm80FwO8", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Aliens in the Attic", year: 2009, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bb8ym5zSRGmhNx3gyDnzSN2waS4.jpg", videoUrl: "https://www.youtube.com/embed/q48iGSCn01U", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "X-Men Origins: Wolverine", year: 2009, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/yj8LbTju1p7CUJg7US2unSBk33s.jpg", videoUrl: "https://www.youtube.com/embed/S6k0ke8T_MA", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Dragonball Evolution", year: 2009, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ztlqrY7VgFIFmtzVsh3TPYiXCdF.jpg", videoUrl: "https://www.youtube.com/embed/yQ0-Ua6aU-A", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "Max Payne", year: 2008, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3cWnCG5NyXJYARO2hmNqfbbgrMA.jpg", videoUrl: "https://www.youtube.com/embed/p_3s5_21pC8", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "The Love Guru", year: 2008, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/sp8AV64ftAZCT9uWfgbCb3olGDW.jpg", videoUrl: "https://www.youtube.com/embed/41k9uD4jSgM", shortDesc: "temp short", longDesc: "temp long" },
-                { title: "The Incredible Hulk", year: 2008, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg", videoUrl: "https://www.youtube.com/embed/xbqNb2PFKKA", shortDesc: "temp short", longDesc: "temp long" },
+                { title: "Maleficent", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bDG3yei6AJlEAK3A5wN7RwFXQ7V.jpg", videoUrl: "https://www.youtube.com/embed/n0OFH4xpPr4", shortDesc: "Lead Animator", longDesc: "temp long" },
+                { title: "Ender's Game", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vmd3CNeG2B9FXsit61oc7oxabej.jpg", videoUrl: "https://www.youtube.com/embed/2UNWLgY-wuo", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "Jack the Giant Slayer", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9jSI7saUX9Qz0JLh19jX2ulEwL7.jpg", videoUrl: "https://www.youtube.com/embed/plvPu2M5e-w", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "The Watch", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwfwC19.jpg", videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "Resident Evil: Retribution", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h_h900_bestv2/ohdUDWVlcbuWphaLu6wS91xdJ73.jpg", videoUrl: "https://www.youtube.com/embed/T_4hSHg1i6o", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "Silent Hill: Revelation", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xBC7bHZ5UglTw4LMd2lTSgXvQXl.jpg", videoUrl: "https://www.youtube.com/embed/Kmw-Vf_kO1M", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "The Three Musketeers", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/woCADkkDIIKrOMEokbFOEsAYtUa.jpg", videoUrl: "https://www.youtube.com/embed/mQd3Mw_Hl4U", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "Hanna", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gRvxRMtejJa9jjfDDUibUIfIJbP.jpg", videoUrl: "https://www.youtube.com/embed/16402QZso1w", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "A Dangerous Method", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7TPYtzq9ABkfED1JB0tRASamL4z.jpg", videoUrl: "https://www.youtube.com/embed/664_1a0z-aE", shortDesc: "Animator", longDesc: "temp long" },
+                { title: "Resident Evil: Afterlife", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xaEHOuIkoTzHQIiex0Ys306Ky05.jpg", videoUrl: "https://www.youtube.com/embed/gq3z4y532-E", shortDesc: "Animator", longDesc: "temp long" },
+                { title: "Knight and Day", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/phhp52CZZJiGYmiOTp9ZBDkGHB3.jpg", videoUrl: "https://www.youtube.com/embed/gbs42eZYC6s", shortDesc: "Animator/3D Generalist", longDesc: "temp long" }
             ];
 
             const portfolioGrid = document.querySelector('.portfolio-grid');
-            if (portfolioGrid) {
-                portfolioData.forEach((item, index) => {
-                    const portfolioItem = document.createElement('div');
-                    portfolioItem.className = 'portfolio-item';
-                    portfolioItem.setAttribute('data-index', index);
-
-                    portfolioItem.innerHTML = `
-                        <div class="image-wrap">
-                            <img referrerpolicy="no-referrer" src="${item.poster}" alt="Poster for ${item.title}" loading="lazy">
-                        </div>
-                        <div class="portfolio-info">
-                            <h3>${item.title} (${item.year})</h3>
-                            <p>${item.shortDesc}</p>
-                        </div>`;
-                    portfolioGrid.appendChild(portfolioItem);
-                });
-            }
-
             const modal = document.getElementById('portfolio-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalVideoContainer = document.getElementById('modal-video-container');
@@ -818,9 +792,76 @@
             const closeBtn = document.getElementById('modal-close-btn');
             const nextBtn = document.getElementById('modal-next-btn');
             const prevBtn = document.getElementById('modal-prev-btn');
-
             let currentIndex = 0;
             let savedScrollPosition = 0;
+
+            if (portfolioGrid) {
+                portfolioData.forEach((item, index) => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.classList.add('portfolio-item');
+                    portfolioItem.innerHTML = `
+                    <div class="image-wrap">
+                        <img referrerpolicy="no-referrer" src="${item.poster}" alt="${item.title}">
+                        <div class="overlay">
+                            <div class="text">
+                                <h3>${item.title}</h3>
+                                <p>${item.shortDesc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                    portfolioItem.addEventListener('click', () => openModal(index));
+                    portfolioGrid.appendChild(portfolioItem);
+                });
+            }
+
+            const openModal = (index) => {
+                savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                currentIndex = index;
+                updateModalContent();
+                modal.classList.add('is-open');
+                // Trigger reflow
+                void modal.offsetHeight;
+                modal.classList.add('is-visible');
+                document.body.classList.add('modal-open');
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${savedScrollPosition}px`;
+                document.body.style.width = '100%';
+            };
+
+            const closeModal = () => {
+                modal.classList.remove('is-visible');
+                setTimeout(() => {
+                    modalVideoContainer.innerHTML = "";
+                    modal.classList.remove('is-open');
+                    document.body.classList.remove('modal-open');
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    document.documentElement.style.scrollBehavior = 'auto';
+                    window.scrollTo(0, savedScrollPosition);
+                    setTimeout(() => {
+                        document.documentElement.style.scrollBehavior = '';
+                    }, 10);
+                }, 300);
+            };
+
+            const updateModalContent = () => {
+                const item = portfolioData[currentIndex];
+                modalTitle.textContent = `${item.title} (${item.year})`;
+                modalDescription.textContent = item.longDesc;
+                createThumbnail(item);
+            };
+
+            const showNextItem = () => {
+                currentIndex = (currentIndex + 1) % portfolioData.length;
+                updateModalContent();
+            };
+
+            const showPrevItem = () => {
+                currentIndex = (currentIndex - 1 + portfolioData.length) % portfolioData.length;
+                updateModalContent();
+            };
 
             function createThumbnail(item) {
                 modalVideoContainer.innerHTML = `
@@ -875,72 +916,8 @@
                         return;
                     }
                 }
-
-                // Fallback for non-YouTube or invalid URLs - open in new tab
-                window.open(videoUrl, '_blank');
             }
 
-
-            const openModal = (index) => {
-                // Save scroll position BEFORE opening modal
-                savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-                currentIndex = index;
-                const item = portfolioData[currentIndex];
-                modalTitle.textContent = `${item.title} (${item.year})`;
-                modalDescription.textContent = item.longDesc;
-
-                createThumbnail(item);
-
-                // Add the is-open class (CSS handles the display)
-                modal.classList.add('is-open');
-
-                // Force browser to recalculate styles (important for mobile)
-                void modal.offsetHeight;
-
-                // Trigger fade in
-                modal.classList.add('is-visible');
-
-                // Prevent body scroll
-                document.body.classList.add('modal-open');
-                document.body.style.position = 'fixed';
-                document.body.style.top = `-${savedScrollPosition}px`;
-                document.body.style.width = '100%';
-            };
-
-            const closeModal = () => {
-                // Trigger fade out
-                modal.classList.remove('is-visible');
-
-                // Wait for transition to complete
-                setTimeout(() => {
-                    modalVideoContainer.innerHTML = "";
-
-                    // Remove the is-open class (CSS handles the display)
-                    modal.classList.remove('is-open');
-
-                    // Restore body scroll
-                    document.body.classList.remove('modal-open');
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
-
-                    // Restore scroll to the saved position
-                    window.scrollTo(0, savedScrollPosition);
-                }, 300);
-            };
-
-            const showNextItem = () => openModal((currentIndex + 1) % portfolioData.length);
-            const showPrevItem = () => openModal((currentIndex - 1 + portfolioData.length) % portfolioData.length);
-
-            portfolioGrid.addEventListener('click', (e) => {
-                const item = e.target.closest('.portfolio-item');
-                if (item) {
-                    openModal(parseInt(item.getAttribute('data-index'), 10));
-                }
-            });
-
-            // Handle both click and touch events for better mobile support
             function handleVideoPlay(e) {
                 e.preventDefault();
                 e.stopPropagation();
