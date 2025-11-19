@@ -130,12 +130,6 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
@@ -151,9 +145,6 @@
 
         section {
             padding: 80px 0;
-        }
-
-        section {
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -722,20 +713,18 @@
                 </div>
                 <div class="modal-details">
                     <h4>About My Role</h4>
-                    <p id="modal-description">Detailed description of my role and contributions to this project.</p>
+                    <p id="modal-description">Detailed description of my role and contributions
+                        to this project.</p>
                 </div>
             </div>
         </div>
         <div class="modal-nav">
-            <button class="modal-nav-btn" id="modal-prev-btn">
-                << /button>
-                    <button class="modal-nav-btn" id="modal-next-btn">></button>
+            <button class="modal-nav-btn" id="modal-prev-btn">&#10094;</button>
+            <button class="modal-nav-btn" id="modal-next-btn">&#10095;</button>
         </div>
     </div>
 
-
     <script>
-
         // Compatibility: ensure fade-in sections are visible on browsers without IntersectionObserver
         (function () {
             if (!('IntersectionObserver' in window)) {
@@ -758,7 +747,7 @@
                 { title: "Marvel's Secret Invasion", year: 2023, poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", videoUrl: "https://www.youtube.com/embed/Tp_YZNqNBhw", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
                 { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
                 { title: "WandaVision", year: 2021, poster: "https://artworks.thetvdb.com/banners/series/362392/posters/5f6a1111c2752.jpg", videoUrl: "https://www.youtube.com/embed/sj9J2ecsSpo", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
-                { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFvhB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
+                { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFphB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "Senior Animation Supervisor", longDesc: "temp long" },
                 { title: "Chaos Walking", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xAYGdGBGptNkisXRpmhZSry6SPF.jpg", videoUrl: "https://www.youtube.com/embed/nRf4ZgzHoVw", shortDesc: "Animation Supervisor", longDesc: "temp long" },
                 { title: "Shazam!", year: 2019, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xnopI5Xtky18MPhK40cZAGAOVeV.jpg", videoUrl: "https://www.youtube.com/embed/go6GEIrcvFY", shortDesc: "Animation Supervisor", longDesc: "temp long" },
                 { title: "Lost In Space", year: 2018, poster: "https://artworks.thetvdb.com/banners/v4/series/343253/posters/61883b3134fd8.jpg", videoUrl: "https://www.youtube.com/embed/fzmM0AB60QQ", shortDesc: "Animation Supervisor", longDesc: "temp long" },
@@ -774,7 +763,7 @@
                 { title: "Maleficent", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bDG3yei6AJlEAK3A5wN7RwFXQ7V.jpg", videoUrl: "https://www.youtube.com/embed/n0OFH4xpPr4", shortDesc: "Lead Animator", longDesc: "temp long" },
                 { title: "Ender's Game", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vmd3CNeG2B9FXsit61oc7oxabej.jpg", videoUrl: "https://www.youtube.com/embed/2UNWLgY-wuo", shortDesc: "Senior Animator", longDesc: "temp long" },
                 { title: "Jack the Giant Slayer", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9jSI7saUX9Qz0JLh19jX2ulEwL7.jpg", videoUrl: "https://www.youtube.com/embed/plvPu2M5e-w", shortDesc: "Senior Animator", longDesc: "temp long" },
-                { title: "The Watch", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwfwC19.jpg", videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE", shortDesc: "Senior Animator", longDesc: "temp long" },
+                { title: "The Watch", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwC19.jpg", videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE", shortDesc: "Senior Animator", longDesc: "temp long" },
                 { title: "Resident Evil: Retribution", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h_h900_bestv2/ohdUDWVlcbuWphaLu6wS91xdJ73.jpg", videoUrl: "https://www.youtube.com/embed/T_4hSHg1i6o", shortDesc: "Senior Animator", longDesc: "temp long" },
                 { title: "Silent Hill: Revelation", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xBC7bHZ5UglTw4LMd2lTSgXvQXl.jpg", videoUrl: "https://www.youtube.com/embed/Kmw-Vf_kO1M", shortDesc: "Senior Animator", longDesc: "temp long" },
                 { title: "The Three Musketeers", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/woCADkkDIIKrOMEokbFOEsAYtUa.jpg", videoUrl: "https://www.youtube.com/embed/mQd3Mw_Hl4U", shortDesc: "Senior Animator", longDesc: "temp long" },
@@ -934,89 +923,61 @@
                 }
             }
 
-            modalVideoContainer.addEventListener('click', handleVideoPlay);
-            // Add touch support for mobile
-            modalVideoContainer.addEventListener('touchend', function (e) {
-                // Only trigger if it's a tap (not a swipe)
-                if (e.target === e.currentTarget || e.target.closest('.video-container') || e.target.closest('.modal-play-button')) {
-                    handleVideoPlay(e);
-                }
-            }, { passive: false });
-
-            // Handle close button with touch support
-            function handleClose() {
+            function handleClose(e) {
+                e.preventDefault();
                 closeModal();
             }
-            closeBtn.addEventListener('click', handleClose);
-            closeBtn.addEventListener('touchend', function (e) {
-                e.preventDefault();
-                handleClose();
-            }, { passive: false });
 
-            // Handle navigation buttons with touch support
-            function handleNext(e) {
+            // Event Listeners
+            if (closeBtn) closeBtn.addEventListener('click', handleClose);
+            if (nextBtn) nextBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation();
                 showNextItem();
-            }
-            function handlePrev(e) {
+            });
+            if (prevBtn) prevBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation();
                 showPrevItem();
-            }
-
-            nextBtn.addEventListener('click', handleNext);
-            nextBtn.addEventListener('touchend', handleNext, { passive: false });
-            prevBtn.addEventListener('click', handlePrev);
-            prevBtn.addEventListener('touchend', handlePrev, { passive: false });
-
-            // Close modal when clicking outside (with touch support)
-            function handleModalBackdrop(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            }
-            modal.addEventListener('click', handleModalBackdrop);
-            modal.addEventListener('touchend', function (e) {
-                if (e.target === modal) {
-                    e.preventDefault();
-                    closeModal();
-                }
-            }, { passive: false });
-            document.addEventListener('keydown', (e) => {
-                if (modal.classList.contains('is-open')) {
-                    if (e.key === 'Escape') closeModal();
-                    if (e.key === 'ArrowRight') showNextItem();
-                    if (e.key === 'ArrowLeft') showPrevItem();
-                }
             });
 
-            const sections = document.querySelectorAll('.fade-in-section');
-            if (sections) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-                sections.forEach(section => {
-                    observer.observe(section);
+            // Close on backdrop click
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
                 });
             }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('is-open')) return;
+
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowRight') showNextItem();
+                if (e.key === 'ArrowLeft') showPrevItem();
+            });
+
+            // Intersection Observer for Fade-in
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
         });
     </script>
-
-
-    <noscript>
-        <style>
-            .fade-in-section {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        </style>
-    </noscript>
 
 </body>
 
