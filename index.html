@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -53,34 +55,41 @@
             background-color: #050505;
             color: #e2e8f0;
         }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #050505;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #334155;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
+
         .glass {
             background: rgba(18, 18, 18, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
@@ -91,6 +100,7 @@
 }
 </script>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -98,25 +108,38 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="#" class="text-xl md:text-2xl font-display font-bold tracking-tighter text-white group">
                 F<span class="text-brand-yellow">S</span>
-                <span class="hidden sm:inline text-slate-500 group-hover:text-white transition-colors text-lg ml-2 font-normal">| Animation Supervisor</span>
+                <span
+                    class="hidden sm:inline text-slate-500 group-hover:text-white transition-colors text-lg ml-2 font-normal">|
+                    Animation Supervisor</span>
             </a>
 
             <!-- Desktop Nav -->
             <div class="hidden md:flex gap-8 items-center">
-                <a href="#about" class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">About</a>
-                <a href="#demo-reel" class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">Demo Reel</a>
-                <a href="#portfolio" class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">Portfolio</a>
-                <a href="#contact" class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">Contact</a>
+                <a href="#about"
+                    class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">About</a>
+                <a href="#demo-reel"
+                    class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">Demo
+                    Reel</a>
+                <a href="#portfolio"
+                    class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">Portfolio</a>
+                <a href="#contact"
+                    class="text-sm font-medium tracking-wide text-slate-400 hover:text-white hover:tracking-wider transition-all duration-200">Contact</a>
             </div>
 
             <!-- Mobile Menu Toggle -->
             <button id="mobile-menu-btn" class="md:hidden text-white p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
             </button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-[#050505] border-b border-white/10 py-6 px-6 flex-col gap-4 shadow-2xl">
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 right-0 bg-[#050505] border-b border-white/10 py-6 px-6 flex-col gap-4 shadow-2xl">
             <a href="#about" class="text-lg font-medium text-white mobile-link">About</a>
             <a href="#demo-reel" class="text-lg font-medium text-white mobile-link">Demo Reel</a>
             <a href="#portfolio" class="text-lg font-medium text-white mobile-link">Portfolio</a>
@@ -129,25 +152,32 @@
         <section class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20">
             <!-- Background Elements -->
             <div class="absolute inset-0 bg-noise opacity-20 pointer-events-none z-0"></div>
-            <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen pointer-events-none"></div>
-            <div class="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] animate-pulse-slow pointer-events-none" style="animation-delay: 2s"></div>
+            <div
+                class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen pointer-events-none">
+            </div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-brand-yellow/5 rounded-full blur-[120px] animate-pulse-slow pointer-events-none"
+                style="animation-delay: 2s"></div>
 
             <div class="relative z-10 w-full max-w-7xl px-6 flex flex-col items-start justify-center">
                 <!-- Top Tagline -->
                 <div class="overflow-hidden mb-2 md:mb-4">
                     <div class="flex items-center gap-3 animate-slide-up" style="animation-delay: 0.1s">
                         <div class="h-[2px] w-8 md:w-12 bg-brand-yellow"></div>
-                        <span class="text-brand-yellow font-mono text-xs md:text-sm tracking-widest uppercase font-semibold">Animation Supervisor | Head of Department</span>
+                        <span
+                            class="text-brand-yellow font-mono text-xs md:text-sm tracking-widest uppercase font-semibold">Animation
+                            Supervisor | Head of Department</span>
                     </div>
                 </div>
 
                 <!-- Main Title -->
                 <h1 class="flex flex-col font-display font-bold tracking-tighter leading-none mb-10">
-                    <span class="text-7xl md:text-9xl lg:text-[11rem] text-white animate-slide-up relative z-10" style="animation-delay: 0.2s">
+                    <span class="text-7xl md:text-9xl lg:text-[11rem] text-white animate-slide-up relative z-10"
+                        style="animation-delay: 0.2s">
                         FRANKIE
                     </span>
                     <span class="animate-slide-up relative z-0 -mt-2 md:-mt-4 lg:-mt-6" style="animation-delay: 0.3s">
-                        <span class="bg-brand-yellow text-brand-dark px-3 md:px-6 pb-1 md:pb-4 pt-1 md:pt-2 text-7xl md:text-9xl lg:text-[11rem] inline-block leading-[0.85] shadow-lg shadow-brand-yellow/20">
+                        <span
+                            class="bg-brand-yellow text-brand-dark px-3 md:px-6 pb-1 md:pb-4 pt-1 md:pt-2 text-7xl md:text-9xl lg:text-[11rem] inline-block leading-[0.85] shadow-lg shadow-brand-yellow/20">
                             STELLATO
                         </span>
                     </span>
@@ -155,15 +185,23 @@
 
                 <!-- Description & CTA -->
                 <div class="flex flex-col md:flex-row justify-between items-end w-full gap-12 mt-4">
-                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl font-light leading-relaxed animate-slide-up" style="animation-delay: 0.4s">
-                        Over 15 years of experience leading animation teams on blockbuster films. Crafting compelling character performances and pushing the boundaries of visual storytelling.
+                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl font-light leading-relaxed animate-slide-up"
+                        style="animation-delay: 0.4s">
+                        Over 15 years of experience leading animation teams on blockbuster films. Crafting compelling
+                        character performances and pushing the boundaries of visual storytelling.
                     </p>
 
                     <div class="flex flex-wrap gap-4 animate-slide-up" style="animation-delay: 0.5s">
-                        <a href="#demo-reel" class="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden flex items-center gap-2 transition-all hover:scale-105">
-                            <div class="absolute inset-0 bg-brand-yellow translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        <a href="#demo-reel"
+                            class="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden flex items-center gap-2 transition-all hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-brand-yellow translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            </div>
                             <span class="relative z-10 flex items-center gap-2 group-hover:text-black">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="text-current"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="currentColor" stroke="none" class="text-current">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
                                 Watch Demo Reel
                             </span>
                         </a>
@@ -172,19 +210,27 @@
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+            <div
+                class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
                 <span class="text-xs font-mono uppercase tracking-widest">Scroll</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
             </div>
         </section>
 
         <!-- About -->
         <section id="about" class="py-24 bg-[#080808] relative overflow-hidden border-t border-white/5">
             <!-- Tech Grid Background -->
-            <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;"></div>
-            
+            <div class="absolute inset-0 opacity-[0.03]"
+                style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;">
+            </div>
+
             <!-- Large Typographic Background -->
-            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-full overflow-hidden pointer-events-none opacity-[0.02]">
+            <div
+                class="absolute top-1/2 left-0 -translate-y-1/2 w-full overflow-hidden pointer-events-none opacity-[0.02]">
                 <span class="text-[20vw] font-display font-bold leading-none text-white whitespace-nowrap ml-[-10vw]">
                     VISUAL STORYTELLER
                 </span>
@@ -195,17 +241,27 @@
                     <!-- Image Column -->
                     <div class="lg:col-span-5 lg:sticky lg:top-32 order-2 lg:order-1">
                         <div class="relative">
-                            <div class="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-brand-yellow opacity-50"></div>
-                            <div class="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-brand-yellow opacity-50"></div>
-                            
-                            <div class="relative aspect-[3/4] overflow-hidden rounded-sm bg-brand-surface grayscale hover:grayscale-0 transition-all duration-700 group shadow-2xl shadow-black/50">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Frankie Stellato" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent opacity-80"></div>
-                                
+                            <div
+                                class="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-brand-yellow opacity-50">
+                            </div>
+                            <div
+                                class="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-brand-yellow opacity-50">
+                            </div>
+
+                            <div
+                                class="relative aspect-[3/4] overflow-hidden rounded-sm bg-brand-surface grayscale hover:grayscale-0 transition-all duration-700 group shadow-2xl shadow-black/50">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
+                                    alt="Frankie Stellato"
+                                    class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent opacity-80">
+                                </div>
+
                                 <div class="absolute bottom-6 left-6">
                                     <div class="flex items-center gap-2 mb-2">
                                         <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                        <span class="text-xs font-mono text-green-500 uppercase tracking-wider">Open for Opportunities</span>
+                                        <span class="text-xs font-mono text-green-500 uppercase tracking-wider">Open for
+                                            Opportunities</span>
                                     </div>
                                     <h3 class="font-display font-bold text-2xl text-white">Frankie Stellato</h3>
                                     <p class="text-slate-400 text-sm">Head of Department</p>
@@ -218,50 +274,94 @@
                     <div class="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-10">
                         <div>
                             <h2 class="text-4xl md:text-6xl font-display font-bold text-white leading-[0.9] mb-6">
-                                Crafting the <br/>
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-white">Unforgettable.</span>
+                                Crafting the <br />
+                                <span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-white">Unforgettable.</span>
                             </h2>
                             <div class="h-1 w-24 bg-brand-accent"></div>
                         </div>
 
                         <div class="space-y-6 text-lg text-slate-300 leading-relaxed font-light">
                             <p>
-                                <span class="text-white font-medium">Animation isn't just movement; it's emotion.</span> With over 15 years in the VFX trenches, I've dedicated my career to finding the soul within the digital.
+                                <span class="text-white font-medium">Animation isn't just movement; it's emotion.</span>
+                                With over 15 years in the VFX trenches, I've dedicated my career to finding the soul
+                                within the digital.
                             </p>
                             <p>
-                                From the subtle twitch of a creature's eye to the physics-defying choreography of superhero battles, I supervise teams to deliver shots that don't just look real—they feel true. My approach blends technical rigour with artistic intuition, ensuring that every frame serves the narrative.
+                                From the subtle twitch of a creature's eye to the physics-defying choreography of
+                                superhero battles, I supervise teams to deliver shots that don't just look real—they
+                                feel true. My approach blends technical rigour with artistic intuition, ensuring that
+                                every frame serves the narrative.
                             </p>
                             <p>
-                                Currently exploring the intersection of generative AI and traditional keyframe animation to empower artists and accelerate creative iterations.
+                                Currently exploring the intersection of generative AI and traditional keyframe animation
+                                to empower artists and accelerate creative iterations.
                             </p>
                         </div>
 
                         <!-- Expertise Tags -->
                         <div>
-                            <h4 class="font-mono text-xs uppercase tracking-widest text-slate-500 mb-4">Core Competencies</h4>
+                            <h4 class="font-mono text-xs uppercase tracking-widest text-slate-500 mb-4">Core
+                                Competencies</h4>
                             <div class="flex flex-wrap gap-3">
-                                <span class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-yellow"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span
+                                    class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-brand-yellow">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                     Creature Animation
                                 </span>
-                                <span class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-yellow"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span
+                                    class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-brand-yellow">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                     Facial Performance
                                 </span>
-                                <span class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-yellow"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span
+                                    class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-brand-yellow">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                     Motion Capture Direction
                                 </span>
-                                <span class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-yellow"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span
+                                    class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-brand-yellow">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                     Team Leadership
                                 </span>
-                                <span class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-yellow"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span
+                                    class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-brand-yellow">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                     Pipeline Development
                                 </span>
-                                <span class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-yellow"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <span
+                                    class="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-sm text-slate-300 hover:border-brand-yellow/30 hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="text-brand-yellow">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
                                     Previs & Postvis
                                 </span>
                             </div>
@@ -270,17 +370,39 @@
                         <!-- Stats Row -->
                         <div class="grid grid-cols-3 gap-4 p-6 bg-white/5 rounded-xl border border-white/5">
                             <div class="text-center border-r border-white/5 last:border-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-brand-yellow"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mx-auto mb-2 text-brand-yellow">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
                                 <div class="text-3xl font-display font-bold text-white">15+</div>
                                 <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Years</div>
                             </div>
                             <div class="text-center border-r border-white/5 last:border-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-brand-yellow"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><path d="M7 3v18"></path><path d="M3 7.5h4"></path><path d="M3 12h18"></path><path d="M3 16.5h4"></path><path d="M17 3v18"></path><path d="M17 7.5h4"></path><path d="M17 16.5h4"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mx-auto mb-2 text-brand-yellow">
+                                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                                    <path d="M7 3v18"></path>
+                                    <path d="M3 7.5h4"></path>
+                                    <path d="M3 12h18"></path>
+                                    <path d="M3 16.5h4"></path>
+                                    <path d="M17 3v18"></path>
+                                    <path d="M17 7.5h4"></path>
+                                    <path d="M17 16.5h4"></path>
+                                </svg>
                                 <div class="text-3xl font-display font-bold text-white">30+</div>
                                 <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Films</div>
                             </div>
                             <div class="text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2 text-brand-yellow"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mx-auto mb-2 text-brand-yellow">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
                                 <div class="text-3xl font-display font-bold text-white">40+</div>
                                 <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Team Size</div>
                             </div>
@@ -291,20 +413,25 @@
         </section>
 
         <!-- Demo Reel Section -->
-        <section id="demo-reel" class="bg-black py-24 flex flex-col items-center justify-center border-y border-white/5 relative">
+        <section id="demo-reel"
+            class="bg-black py-24 flex flex-col items-center justify-center border-y border-white/5 relative">
             <div class="absolute inset-0 bg-noise opacity-20 pointer-events-none"></div>
             <div class="max-w-6xl w-full px-6 relative z-10">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-4">Supervisor Demo Reel</h2>
                     <div class="h-1 w-20 bg-brand-yellow mx-auto"></div>
                 </div>
-                
-                <div class="w-full aspect-video bg-brand-surface rounded-xl overflow-hidden shadow-2xl border border-white/10">
-                    <iframe src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0" class="w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+                <div
+                    class="w-full aspect-video bg-brand-surface rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                    <iframe src="https://player.vimeo.com/video/415225136?color=e74645&title=0&byline=0&portrait=0"
+                        class="w-full h-full" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
-                
+
                 <div class="text-center mt-8">
-                    <a href="https://vimeo.com/417693399" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-slate-400 hover:text-white border-b border-slate-600 hover:border-white pb-1 transition-all">
+                    <a href="https://vimeo.com/417693399" target="_blank" rel="noreferrer"
+                        class="inline-flex items-center gap-2 text-slate-400 hover:text-white border-b border-slate-600 hover:border-white pb-1 transition-all">
                         View Animation Demo Reel on Vimeo
                     </a>
                 </div>
@@ -317,11 +444,16 @@
                 <!-- Section Header -->
                 <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                     <div>
-                        <span class="text-brand-yellow font-mono text-sm uppercase tracking-widest mb-2 block">Selected Works</span>
+                        <span class="text-brand-yellow font-mono text-sm uppercase tracking-widest mb-2 block">Selected
+                            Works</span>
                         <h2 class="text-4xl md:text-6xl font-display font-bold text-white">Filmography</h2>
                     </div>
                     <div class="hidden md:flex items-center gap-2 text-slate-400 text-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
                         <span>Click poster to view details</span>
                     </div>
                 </div>
@@ -340,25 +472,54 @@
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-8">Get In Touch</h2>
             <p class="text-slate-400 mb-10 max-w-lg mx-auto">
-                I'm always open to discussing new projects, leadership opportunities, and the future of animation technology.
+                I'm always open to discussing new projects, leadership opportunities, and the future of animation
+                technology.
             </p>
-            
-            <a href="mailto:frankie.stellato@example.com" class="inline-flex items-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-brand-yellow transition-colors mb-12">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+
+            <a href="mailto:frankie.stellato@example.com"
+                class="inline-flex items-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-brand-yellow transition-colors mb-12">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
                 frankie.stellato@example.com
             </a>
 
             <div class="flex justify-center gap-6 mb-12">
-                <a href="https://www.linkedin.com/in/frankiestellato/" target="_blank" rel="noreferrer" class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-[#0077b5] hover:text-white transition-all duration-300 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                
-                <a href="https://www.imdb.com/name/nm3070627/" target="_blank" rel="noreferrer" class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-[#F5C518] hover:text-black transition-all duration-300 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><path d="M7 3v18"></path><path d="M3 7.5h4"></path><path d="M3 12h18"></path><path d="M3 16.5h4"></path><path d="M17 3v18"></path><path d="M17 7.5h4"></path><path d="M17 16.5h4"></path></svg>
+                <a href="https://www.linkedin.com/in/frankiestellato/" target="_blank" rel="noreferrer"
+                    class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-[#0077b5] hover:text-white transition-all duration-300 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect width="4" height="12" x="2" y="9"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
                 </a>
 
-                <a href="#" class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-black transition-all duration-300 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                <a href="https://www.imdb.com/name/nm3070627/" target="_blank" rel="noreferrer"
+                    class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-[#F5C518] hover:text-black transition-all duration-300 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <path d="M7 3v18"></path>
+                        <path d="M3 7.5h4"></path>
+                        <path d="M3 12h18"></path>
+                        <path d="M3 16.5h4"></path>
+                        <path d="M17 3v18"></path>
+                        <path d="M17 7.5h4"></path>
+                        <path d="M17 16.5h4"></path>
+                    </svg>
+                </a>
+
+                <a href="#"
+                    class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-brand-yellow hover:text-black transition-all duration-300 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                        </path>
+                    </svg>
                 </a>
             </div>
 
@@ -369,12 +530,19 @@
     </footer>
 
     <!-- Modal Template (Hidden) -->
-    <div id="portfolio-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
+    <div id="portfolio-modal"
+        class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
         <!-- Modal Container -->
-        <div class="relative w-full max-w-6xl bg-brand-surface border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] transform scale-95 transition-transform duration-300" id="modal-content">
+        <div class="relative w-full max-w-6xl bg-brand-surface border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] transform scale-95 transition-transform duration-300"
+            id="modal-content">
             <!-- Close Button -->
-            <button id="modal-close" class="absolute top-4 right-4 z-20 p-2 bg-black/50 text-white rounded-full hover:bg-white hover:text-black transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <button id="modal-close"
+                class="absolute top-4 right-4 z-20 p-2 bg-black/50 text-white rounded-full hover:bg-white hover:text-black transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
 
             <!-- Video / Image Side -->
@@ -385,7 +553,8 @@
             <!-- Info Side -->
             <div class="w-full md:w-1/3 p-8 flex flex-col overflow-y-auto bg-[#121212]">
                 <div class="mb-6">
-                    <span id="modal-year" class="inline-block px-3 py-1 rounded-full bg-brand-yellow/10 text-brand-yellow text-xs font-bold mb-3 border border-brand-yellow/20"></span>
+                    <span id="modal-year"
+                        class="inline-block px-3 py-1 rounded-full bg-brand-yellow/10 text-brand-yellow text-xs font-bold mb-3 border border-brand-yellow/20"></span>
                     <h2 id="modal-title" class="text-3xl font-display font-bold text-white mb-2"></h2>
                     <p id="modal-role" class="text-brand-accent font-medium"></p>
                 </div>
@@ -397,11 +566,20 @@
 
                 <!-- Navigation -->
                 <div class="flex gap-4 mt-8 pt-6 border-t border-white/10">
-                    <button id="modal-prev" class="flex-1 py-3 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg> Prev
+                    <button id="modal-prev"
+                        class="flex-1 py-3 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg> Prev
                     </button>
-                    <button id="modal-next" class="flex-1 py-3 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
-                        Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    <button id="modal-next"
+                        class="flex-1 py-3 flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
+                        Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -418,7 +596,7 @@
             { title: "Marvel's Secret Invasion", year: 2023, poster: "https://artworks.thetvdb.com/banners/v4/series/393203/posters/6480c6e95966d.jpg", videoUrl: "https://www.youtube.com/embed/Tp_YZNqNBhw", shortDesc: "Senior Animation Supervisor", longDesc: "Managed animation for Skrull transformations and stunt-heavy sequences." },
             { title: "Spider-Man: No Way Home", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", videoUrl: "https://www.youtube.com/embed/JfVOs4VSpmA", shortDesc: "Senior Animation Supervisor", longDesc: "Collaborated on key battle sequences involving multiple villains, focusing on distinct movement styles for each character." },
             { title: "WandaVision", year: 2021, poster: "https://artworks.thetvdb.com/banners/series/362392/posters/5f6a1111c2752.jpg", videoUrl: "https://www.youtube.com/embed/sj9J2ecsSpo", shortDesc: "Senior Animation Supervisor", longDesc: "Handled animation across various sitcom eras, adapting animation styles to match historical TV references." },
-            { title: "Black Widow", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFphB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "Senior Animation Supervisor", longDesc: "Supervised the Taskmaster fight sequences, ensuring 1:1 matching of reference footage for the character's mimicry ability." },
+            { title: "Black Widow", year: 2021, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7JPpIjhD2V0sKyFvhB9khUMa30d.jpg", videoUrl: "https://www.youtube.com/embed/Fp9pNPdNwjI", shortDesc: "Senior Animation Supervisor", longDesc: "Supervised the Taskmaster fight sequences, ensuring 1:1 matching of reference footage for the character's mimicry ability." },
             { title: "Chaos Walking", year: 2021, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xAYGdGBGptNkisXRpmhZSry6SPF.jpg", videoUrl: "https://www.youtube.com/embed/nRf4ZgzHoVw", shortDesc: "Animation Supervisor", longDesc: "Responsible for the creature design and movement of the Spackle." },
             { title: "Shazam!", year: 2019, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xnopI5Xtky18MPhK40cZAGAOVeV.jpg", videoUrl: "https://www.youtube.com/embed/go6GEIrcvFY", shortDesc: "Animation Supervisor", longDesc: "Focused on flight mechanics and the Seven Deadly Sins creatures." },
             { title: "Lost In Space", year: 2018, poster: "https://artworks.thetvdb.com/banners/v4/series/343253/posters/61883b3134fd8.jpg", videoUrl: "https://www.youtube.com/embed/fzmM0AB60QQ", shortDesc: "Animation Supervisor", longDesc: "Developed the Robot's signature movement and emotional expression through posture." },
@@ -426,27 +604,38 @@
             { title: "Ant-Man and the Wasp", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/cFQEO687n1K6umXbInzocxcnAQz.jpg", videoUrl: "https://www.youtube.com/embed/8_rTIAOohas", shortDesc: "Animation Supervisor", longDesc: "Scale manipulation animation and insect movement." },
             { title: "Avengers: Infinity War", year: 2018, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", videoUrl: "https://www.youtube.com/embed/6ZfuNTqbHE8", shortDesc: "Lead Animator", longDesc: "Led animation on the Titan battle sequence." },
             { title: "Spider-Man: Homecoming", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg", videoUrl: "https://www.youtube.com/embed/n9DwoQ7HWvI", shortDesc: "Lead Animator", longDesc: "Vulture wing mechanics and flight." },
-            { title: "Beauty and the Beast", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/hKegSKIDep2ewJWPUQD7u0KqFIp.jpg", videoUrl: "https://www.youtube.com/embed/e3Nl_TCQXuw", shortDesc: "Lead Animator", longDesc: "temp long" },
+            { title: "Beauty and the Beast", year: 2017, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/hKegSKIDep2ewJWPUQD7u0KqFIp.jpg", videoUrl: "https://www.youtube.com/watch?v=iSGUAlTDyO8", shortDesc: "Lead Animator", longDesc: "temp long" },
             { title: "Independence Day: Resurgence", year: 2016, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9S50foUIYGwiNPWOxi1WJF6IPwI.jpg", videoUrl: "https://www.youtube.com/embed/RfJgT89hEME", shortDesc: "Temp Animation Supervisor", longDesc: "temp long" },
             { title: "Deadpool", year: 2016, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3E53WEZJqP6aM84D8CckXx4pIHw.jpg", videoUrl: "https://www.youtube.com/embed/ONHBaC-pfsk", shortDesc: "Lead Animator", longDesc: "temp long" },
-            { title: "Pixels", year: 2015, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/d26S5EfVXLNxRXqyFy1yyl3qRq3.jpg", videoUrl: "https://www.youtube.com/embed/XAHpr_dbOLw", shortDesc: "Lead Animator", longDesc: "temp long" },
-            { title: "Night at the Museum: Secret of the Tomb", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xwgy305K6qDs3D20xUO4OZu1HPY.jpg", videoUrl: "https://www.youtube.com/embed/Hrkt_wSg1-I", shortDesc: "temp short", longDesc: "temp long" },
-            { title: "Maleficent", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bDG3yei6AJlEAK3A5wN7RwFXQ7V.jpg", videoUrl: "https://www.youtube.com/embed/n0OFH4xpPr4", shortDesc: "Lead Animator", longDesc: "temp long" },
+            { title: "Pixels", year: 2015, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/d26S5EfVXLNxRXqyFy1yyl3qRq3.jpg", videoUrl: "https://www.youtube.com/watch?v=XAHprLW48no", shortDesc: "Lead Animator", longDesc: "temp long" },
+            { title: "Night at the Museum: Secret of the Tomb", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xwgy305K6qDs3D20xUO4OZu1HPY.jpg", videoUrl: "https://www.youtube.com/watch?v=KMKk7Dn__-Y", shortDesc: "temp short", longDesc: "temp long" },
+            { title: "Maleficent", year: 2014, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bDG3yei6AJlEAK3A5wN7RwFXQ7V.jpg", videoUrl: "https://www.youtube.com/watch?v=JIIgXEGAZgE", shortDesc: "Lead Animator", longDesc: "temp long" },
             { title: "Ender's Game", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vmd3CNeG2B9FXsit61oc7oxabej.jpg", videoUrl: "https://www.youtube.com/embed/2UNWLgY-wuo", shortDesc: "Senior Animator", longDesc: "temp long" },
-            { title: "Jack the Giant Slayer", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9jSI7saUX9Qz0JLh19jX2ulEwL7.jpg", videoUrl: "https://www.youtube.com/embed/plvPu2M5e-w", shortDesc: "Senior Animator", longDesc: "temp long" },
-            { title: "The Watch", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwC19.jpg", videoUrl: "https://www.youtube.com/embed/zN69-xxS1VE", shortDesc: "Senior Animator", longDesc: "temp long" },
-            { title: "Resident Evil: Retribution", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h_h900_bestv2/ohdUDWVlcbuWphaLu6wS91xdJ73.jpg", videoUrl: "https://www.youtube.com/embed/T_4hSHg1i6o", shortDesc: "Senior Animator", longDesc: "temp long" },
+            { title: "Jack the Giant Slayer", year: 2013, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9jSI7saUX9Qz0JLh19jX2ulEwL7.jpg", videoUrl: "https://www.youtube.com/watch?v=SBBONir09z4", shortDesc: "Senior Animator", longDesc: "temp long" },
+            { title: "The Watch", year: 2012, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gwfgYA9wGpV4QLB0LrcexwfwC19.jpg", videoUrl: "https://www.youtube.com/watch?v=PhN1xnCyqR8", shortDesc: "Senior Animator", longDesc: "temp long" },
+            { title: "Resident Evil: Retribution", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h_h900_bestv2/ohdUDWVlcbuWphaLu6wS91xdJ73.jpg", videoUrl: "https://www.youtube.com/watch?v=hoyMT-7wEqs", shortDesc: "Senior Animator", longDesc: "temp long" },
             { title: "Silent Hill: Revelation", year: 2012, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xBC7bHZ5UglTw4LMd2lTSgXvQXl.jpg", videoUrl: "https://www.youtube.com/embed/Kmw-Vf_kO1M", shortDesc: "Senior Animator", longDesc: "temp long" },
             { title: "The Three Musketeers", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/woCADkkDIIKrOMEokbFOEsAYtUa.jpg", videoUrl: "https://www.youtube.com/embed/mQd3Mw_Hl4U", shortDesc: "Senior Animator", longDesc: "temp long" },
             { title: "Hanna", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gRvxRMtejJa9jjfDDUibUIfIJbP.jpg", videoUrl: "https://www.youtube.com/embed/16402QZso1w", shortDesc: "Senior Animator", longDesc: "temp long" },
             { title: "A Dangerous Method", year: 2011, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7TPYtzq9ABkfED1JB0tRASamL4z.jpg", videoUrl: "https://www.youtube.com/embed/664_1a0z-aE", shortDesc: "Animator", longDesc: "temp long" },
-            { title: "Resident Evil: Afterlife", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xaEHOuIkoTzHQIiex0Ys306Ky05.jpg", videoUrl: "https://www.youtube.com/embed/gq3z4y532-E", shortDesc: "Animator", longDesc: "temp long" },
-            { title: "Knight and Day", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/phhp52CZZJiGYmiOTp9ZBDkGHB3.jpg", videoUrl: "https://www.youtube.com/embed/gbs42eZYC6s", shortDesc: "Animator/3D Generalist", longDesc: "temp long" }
+            { title: "Resident Evil: Afterlife", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/xaEHOuIkoTzHQIiex0Ys306Ky05.jpg", videoUrl: "https://www.youtube.com/watch?v=9b4iOhWswYM", shortDesc: "Animator", longDesc: "temp long" },
+            { title: "Knight and Day", year: 2010, poster: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/phhp52CZZJiGYmiOTp9ZBDkGHB3.jpg", videoUrl: "https://www.youtube.com/embed/gbs42eZYC6s", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "Cats and Dogs: Revege of Kitty Galore", year: 2010, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/nTsZT66I4U3aS9ezLdOKacfvo8T.jpg", videoUrl: "https://www.youtube.com/watch?v=jK6suPB_vTk", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "The Book of Eli", year: 2010, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1H1y9ZiqNFaLgQiRDDZLA55PviW.jpg", videoUrl: "https://www.youtube.com/watch?v=zSMHmtaoXtI", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "Aliens in the Attick", year: 2009, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bb8ym5zSRGmhNx3gyDnzSN2waS4.jpg", videoUrl: "https://www.youtube.com/watch?v=ptaoeL8MQmM", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "X-Men Origins: Wolverine", year: 2009, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yj8LbTju1p7CUJg7US2unSBk33s.jpg", videoUrl: "https://www.youtube.com/watch?v=8IxT7WFL6Ec=ptaoeL8MQmM", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "Dragonball Evolution", year: 2009, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sunS9xhPnFNP5wlOWrvbpBteAB.jpg", videoUrl: "https://www.youtube.com/watch?v=mRWIsj1Bmxs", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "Max Payne", year: 2008, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3cWnCG5NyXJYARO2hmNqfbbgrMA.jpg", videoUrl: "https://www.youtube.com/watch?v=GklHaGfncJI", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "The Love Guru", year: 2008, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sp8AV64ftAZCT9uWfgbCb3olGDW.jpg", videoUrl: "https://www.youtube.com/watch?v=0KUA1d8-6eg", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+            { title: "The Incredible Hulk", year: 2008, poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg", videoUrl: "https://www.youtube.com/watch?v=xbqNb2PFKKA", shortDesc: "Animator/3D Generalist", longDesc: "temp long" },
+
+
+
         ];
 
         // --- Logic ---
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // Header Scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
@@ -463,12 +652,12 @@
             const menuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
-            
+
             let isMenuOpen = false;
 
             const toggleMenu = () => {
                 isMenuOpen = !isMenuOpen;
-                if(isMenuOpen) {
+                if (isMenuOpen) {
                     mobileMenu.classList.remove('hidden');
                     mobileMenu.classList.add('flex');
                     // Change Icon to X
@@ -486,7 +675,7 @@
 
             // Portfolio Rendering
             const portfolioGrid = document.getElementById('portfolio-grid');
-            
+
             portfolioData.forEach((project, index) => {
                 const item = document.createElement('div');
                 item.className = "group relative aspect-[2/3] cursor-pointer bg-brand-dark rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-brand-yellow/10 transition-all duration-300 hover:-translate-y-2";
@@ -515,12 +704,12 @@
             const modalYear = document.getElementById('modal-year');
             const modalRole = document.getElementById('modal-role');
             const modalDesc = document.getElementById('modal-desc');
-            
+
             let currentIndex = 0;
 
             const getEmbedUrl = (url) => {
                 let videoId = '';
-                
+
                 // Extract ID from common YouTube formats
                 if (url.includes('/embed/')) {
                     videoId = url.split('/embed/')[1].split('?')[0];
@@ -534,7 +723,7 @@
                 if (videoId) {
                     return `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&modestbranding=1&rel=0&showinfo=0`;
                 }
-                
+
                 // Fallback for other urls (unlikely in this dataset)
                 return url;
             };
@@ -545,7 +734,7 @@
                 modalYear.textContent = project.year;
                 modalRole.textContent = project.shortDesc;
                 modalDesc.textContent = project.longDesc;
-                
+
                 if (project.videoUrl) {
                     modalMedia.innerHTML = `<iframe src="${getEmbedUrl(project.videoUrl)}" class="w-full h-full absolute inset-0" allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen></iframe>`;
                 } else {
@@ -558,9 +747,9 @@
                 updateModal();
                 modal.classList.remove('hidden');
                 // Force flex display ensures centering
-                modal.style.display = 'flex'; 
+                modal.style.display = 'flex';
                 // Trigger reflow for transition
-                void modal.offsetWidth; 
+                void modal.offsetWidth;
                 modal.classList.remove('opacity-0');
                 modalContent.classList.remove('scale-95');
                 document.body.style.overflow = 'hidden';
@@ -590,20 +779,21 @@
             document.getElementById('modal-close').addEventListener('click', closeModal);
             document.getElementById('modal-next').addEventListener('click', nextProject);
             document.getElementById('modal-prev').addEventListener('click', prevProject);
-            
+
             // Close on outside click
             modal.addEventListener('click', (e) => {
-                if(e.target === modal) closeModal();
+                if (e.target === modal) closeModal();
             });
-            
+
             // Key nav
             document.addEventListener('keydown', (e) => {
-                if(modal.classList.contains('hidden')) return;
-                if(e.key === 'Escape') closeModal();
-                if(e.key === 'ArrowRight') nextProject();
-                if(e.key === 'ArrowLeft') prevProject();
+                if (modal.classList.contains('hidden')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowRight') nextProject();
+                if (e.key === 'ArrowLeft') prevProject();
             });
         });
     </script>
 </body>
+
 </html>
